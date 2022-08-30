@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="{{site.baseurl}}" />
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Saloon</title>
-<link rel="stylesheet" type="text/css" href="css/_menu.css">
-<link rel="stylesheet" type="text/css" href="css/_saloon.css">
-<link rel="stylesheet" type="text/css" href="css/sweetalert/sweetalert.css">
+<base href="{{site.baseurl}}" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_menu.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_saloon.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/sweetalert/sweetalert.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -580,13 +580,13 @@ document.addEventListener('DOMContentLoaded',function(event){
   </div>
 <!-- LOADING OVERLAY-->
 <div id="loadOverlay" style="background: radial-gradient(#683c2c, #363636); position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
-  <div class="loading_badge_place">
-      <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="440" width="440" viewBox="-40 -40 440 440">
-        <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/><!-- cylinder out-->
+  <div class="loading_badge_place" style="position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);height:15vw;width:15vw;text-align:center;z-index:150;">
+      <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="-40 -40 440 440">
+        <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/>
         <circle class="inner" fill="#963316cc" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
-        <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/><!-- side marks -->
+        <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/>
             <g class="star">
-                <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/><!-- center of star -->
+                <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/>
                 <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
                 <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
                 <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
