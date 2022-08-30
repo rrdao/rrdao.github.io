@@ -395,7 +395,7 @@ span.issue_coverage{
   text-align:left;
   font-family: monospace, sans-serif !important;
   font-size: 1.1em;
-  font-size: clamp(14px, 2vw, 16px) !important;
+  font-size: clamp(14px, 2vw, 17px) !important;
   line-height:1.5;
   color:#FFF ; /* #b9b7b7 */
   /* text-shadow: -0.5px 0.5px 0 rgb(90, 87, 87), 0.5px 0.5px 0 rgb(90, 87, 87), 0.5px -0.5px 0 rgb(90, 87, 87), -0.5px -0.5px 0 rgb(90, 87, 87) !important; */
@@ -425,35 +425,40 @@ article {
   width: 20%;
   float: left;
   position: relative;
-  padding:6vw 2.5vw 2vw; /* 67.5px */
+  padding:5vw 2.5vw 2vw; /* 67.5px */
   box-sizing: border-box;
 }
 article .carousel_info{
   width: 100%;
 }
 #carousel_1{
-  background-color: #94563f;
+  /* background-color: #94563f; altRRDAO#1*/
+  background-color: rgba(0,0,0,0.6);
+  
   background-image: url("../img/sketches/_whoweare_comache_dark.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #carousel_2{
-  background-color: #94563f;
+  /* background-color: #94563f; altRRDAO#1*/
+  background-color: rgba(0,0,0,0.6);
   background-image: url("../img/sketches/_whoweare_skelewu_dark.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #carousel_3{
-  background-color: #94563f;
+   /* background-color: #94563f; altRRDAO#1*/
+   background-color: rgba(0,0,0,0.6);
   background-image: url("../img/sketches/_whoweare_backtoback_dark.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #carousel_4{
-  background-color: #94563f;
+   /* background-color: #94563f; altRRDAO#1*/
+   background-color: rgba(0,0,0,0.6);
   background-image: url("../img/sketches/_whoweare_deal_dark.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -523,7 +528,7 @@ article .carousel_info{
   -moz-transition: all 500ms ease-out;
   transition: all 500ms ease-out;
 
-  background-color: #94563f;
+  /* background-color: #94563f; altRRDAO#1*/
   background-position: center;
   background-size:contain;
   -webkit-mask-image:
@@ -889,7 +894,8 @@ img.moonshot{
 #holf_p3_cont{
   padding:0 10px !important;
   box-sizing: border-box;
-  background-color: #94563f;
+  /* background-color: #94563f; altRRDAO#1*/
+  background-color: rgba(0,0,0,0.6);
   background-image: url("../img/sketches/_sketch_leadbygod_dark.png");
   background-position: center;
   background-size:contain;
@@ -937,7 +943,7 @@ div.issuescont, div.holf_3_intro{
 	padding:20px 5%;
 	box-sizing:border-box;
 	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
-  font-size:clamp(14px, 2vw, 16px);
+  font-size:clamp(14px, 2vw, 17px);
   line-height:1.5;
   letter-spacing:normal;
 }
