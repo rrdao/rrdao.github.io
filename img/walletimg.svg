@@ -1,0 +1,20 @@
+<svg width="640" height="640" xmlns="http://www.w3.org/2000/svg" style="vector-effect: non-scaling-stroke;">
+ <desc style="vector-effect: non-scaling-stroke;">Created with Raphaël 2.3.0</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="642" width="642" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect style="vector-effect: non-scaling-stroke;" x="159.71549" y="242.90856" id="svg_1" fill="#c81432" height="246.27072" width="287.66148"/>
+  <rect style="vector-effect: non-scaling-stroke;" x="-241.34775" y="307.59469" id="svg_6" transform="matrix(-2.03076, -21.7573, 26.608, -1.66055, -8420.52, -4416.56)" fill="#03435e" height="16" width="16"/>
+  <rect style="vector-effect: non-scaling-stroke;" x="-251.61793" y="302.00042" id="svg_4" transform="matrix(-0.625459, -19.5542, 8.19508, -1.4924, -2368.64, -3948.55)" fill="#03435e" height="16" width="16"/>
+  <rect x="-243.16718" y="291.54456" id="svg_14" transform="rotate(179.445, 102.695, 185.734) matrix(-1.76072, -25.0872, 23.0698, -1.91469, -7221.79, -5140.41)" fill="#03435e" height="16" width="16"/>
+  <rect x="-238.69782" y="304.189" id="svg_15" transform="rotate(73.5121, 354.697, 84.396) matrix(-2.03076, -21.7573, 26.608, -1.66055, -8420.52, -4416.56)" fill="#03435e" height="16" width="16"/>
+  <rect x="263.37287" y="264.62989" id="svg_3" transform="rotate(91.7342, 328.795, -8.34372) matrix(29.0317, -3.47219, 5.73177, 17.5868, -9112.27, -3860.78)" fill="#fb183e" height="16" width="16"/>
+  <rect x="-237.11701" y="-297.35251" id="svg_2" transform="translate(-101.391, 702.724) scale(1, 0.938434) translate(101.391, -702.724) translate(-101.391, 702.802) scale(1, 1.05787) translate(101.391, -702.802) translate(443.51, 327.984) scale(6.44099, 3.62419) translate(-443.51, -327.984) translate(442.385, 328.932) scale(0.156794, 0.289828) translate(-442.385, -328.932) matrix(-25.2627, 4.55941, -6.69003, -17.2171, -7556.95, -3430.17)" fill="#187af2" height="16" width="16"/>
+  <rect x="-253.96068" y="-300.53049" id="svg_8" transform="translate(711.635, 734.589) scale(1.0209, 1.02438) translate(-711.635, -734.589) translate(702.323, 697.307) scale(1.01592, 1.03915) translate(-702.323, -697.307) translate(673.01, 704.026) scale(1.01344, 1.04074) translate(-673.01, -704.026) translate(175.781, 146.172) scale(2.03287, 2.07179) translate(-175.781, -146.172) translate(176.115, 146.458) scale(0.750463, 0.786021) translate(-176.115, -146.458) translate(176.646, 146.969) scale(0.600647, 0.617116) translate(-176.646, -146.969) matrix(-26.5951, 7.21064, -7.0429, -27.2287, -8100.6, -5745.88)" fill="#187af2" height="16" width="16"/>
+  <rect transform="rotate(-17.4117, 625.046, 279.377)" x="519.04882" y="-46.75806" id="svg_7" fill="#c81432" height="652.27065" width="211.99482"/>
+ </g>
+</svg>
