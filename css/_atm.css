@@ -1,0 +1,1040 @@
+@charset "utf-8";
+/*========================================*/
+/* MAIN LAYOUT STYLES - SHARED WITH BANK */
+#main{
+	background-image: url("../img/bills.jpg");
+	background-size:cover;
+	background-attachment: fixed;
+	background-position:center -70px;
+}
+#mainwindow{
+	position:relative;
+	padding:0;
+	display: table;
+	width: 100vw;
+	max-width: 80% !important;
+	margin:20px auto;
+}
+#mainwindow{
+	height:auto;
+}
+.windows_shift{
+	font: 15px/1.5 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans";
+}
+section.introbanner{
+	position:relative;
+	margin:20px auto;
+	margin-bottom:0px;
+	width:100%;
+	height:100%;
+	padding:0px 40px;
+	box-sizing:border-box;
+	z-index:2;
+}
+svg{
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 100;
+	width: 100%; height: 100%;
+}
+[id=m] + use {
+  	fill: rgb(54, 54, 54);
+	stroke:#683c2c;
+	stroke-width:5;
+}
+.windows_shift{
+	position:relative;
+	margin:0px auto;
+	z-index:200;
+	padding-top:35px;
+	box-sizing:border-box;
+}
+.intro_ {
+	display:block;
+	width:auto;
+	height:auto;
+	padding:10px;
+	color: #FFF;
+	font-family: monospace;
+	font-size:1em;
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	white-space:normal; /* nowrap Keeps the content on a single line */
+	/* Gives that scrolling effect as the typing happens */
+	letter-spacing: .15em; /* Adjust as needed */
+	text-align:left;
+	/* effect on border */
+	
+}
+span#typewrite {/* effect on span */
+	animation: caret 0.7s steps(10) infinite;
+	border-right: .20em solid; /* The typwriter cursor */
+}
+@keyframes caret {
+	from, to { border-color: orange }/* change from black to orange blinking */
+	100% { border-color: #000 }
+}
+.myClaims{
+    position:relative;
+	width:100%;
+	height:auto;
+	padding:10px;
+	box-sizing:border-box;
+	background-color: #363636;
+	color:#FFF;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:center;
+	padding-bottom:50px;
+}
+.myClaims h4, .mybank h4{
+	font-family: monospace, sans-serif, Tahoma, Geneva;
+	font-size: clamp(16px, 2vw, 25px) !important;
+	padding:10px;
+	margin:0px;
+	box-sizing:border-box;
+}
+section.claimsSect{
+	height:auto;
+	border-bottom:1px solid #818181;
+}
+.contractpurpose{
+	display:block;
+	padding:2%;
+	margin:0px auto;
+	width:100%;
+	min-width:auto;
+	font: 17px/1.7 monospace, sans-serif, "Helvetica Neue", Arial, "Liberation Sans" !important;
+	font-weight:600;
+	text-transform:uppercase;
+	text-align:left;
+	color:#EAEAEA;
+	border-top: #e5e5e5 1px solid; 
+	padding-bottom:1%;
+	background-color:#363636;
+	border:1px solid #363636;
+	box-sizing:border-box;
+	background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5));
+}
+.contractpurpose img{
+	width:11.5px;
+	padding-right:4px;
+}
+.tab{
+	tab-size:2;
+}
+.myClaims{
+	width:100%;
+	height:auto;
+	padding:10px;
+	box-sizing:border-box;
+	background-color: #363636;
+	color:#FFF;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:center;
+}
+/* COOL JUMP TO BUTTON */
+.jump{
+	cursor: pointer;
+	position: fixed;
+	right:15px;
+	z-index:5;
+	display: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.jump:before, .jump:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 50px;
+	transition: all 0.25s ease;
+	border-radius: 50%;
+}
+.jumpTop{
+	top:8%;
+}
+.jumpBottom{
+	bottom:5%;
+}
+.jumpTop:after{
+	background:url(../img/up.svg) no-repeat center center;
+	background-size:32px;
+}
+.jumpTop:before{
+	transition-duration: 0.5s;
+	box-shadow: inset 0 0 0 60px #202020;
+}
+.jumpTop:hover:before{
+	background-image: linear-gradient(to top, #342d2c, #42312d, #4f342e, #5c382d, #683c2c) !important;
+	box-shadow: inset 0 0 0 2px #683c2c;
+}
+.jumpBottom:after{
+	box-shadow: inset 0 0 0 2px #683c2c;
+	background:url(../img/down.svg) no-repeat center center;
+	background-size:32px;
+}
+.jumpBottom:before{
+	background-image: linear-gradient(to bottom, #342d2c, #42312d, #4f342e, #5c382d, #683c2c) !important;
+	box-shadow: inset 0 0 0 60px #202020;
+}
+.jumpBottom:hover:before{
+	box-shadow: inset 0 0 0 2px #683c2c;
+}
+/* END OF JUMP BUTTONS */
+section.introbanner{
+	margin:0;
+}
+.myclaimsHold{
+	position:relative;
+	width:auto;
+}
+.myclaimscard_normal{
+	position: relative;
+	width: 100%;
+	max-width:550px; /* 290PX OR 550PX */
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+	border:0.5px solid #333;
+	border-radius:5px;
+	margin: 1%;/* pad all cards */
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(12px, 1vw, 15px) !important;
+	line-height:1.5;
+	box-sizing:border-box;
+	background-color:#252525;
+}
+.mccard_details span{
+	font-size: clamp(12px, 1vw, 14.5px) !important;
+}
+.eventsNotice{
+	position: absolute;
+  bottom: 0;
+  right: 0;
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+	width: 100%;
+	max-width:150px;
+	height:auto;
+	border:0.5px solid #333;
+	border-radius:5px;
+	padding:0;
+	box-sizing:border-box;
+	z-index:2;
+}
+.eventStrip{
+	margin: 5px auto;
+    display:flex;
+    align-items:center;
+    font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(12px, 1vw, 15px) !important;
+	line-height:1.5;
+}
+.eventIcon{
+	float: left;/* flex on parent + float & display inline to place icon & name side by side */
+	display:inline-block;
+	width:70px;
+	height:50px;
+	cursor:pointer;
+	background-color:#333333;
+
+    border: 2px solid #555555;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	border-radius:20%;
+
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.eventIcon:hover {
+    background-color: #555555;
+    border:0.5px solid #555555;
+}
+
+/*Bounce*/
+@keyframes kreep {
+    0% {-webkit-transform: scale(1.1,.9);
+        transform: scale(1.1,.9);}
+   50% { -webkit-transform: scale(.9,1.1) translateY(-.5rem)}
+   70% { -webkit-transform: scale(1);
+         transform: scale(1);}
+}
+.eventIcon {
+  display: inline-block;
+  /*name-duration-function(ease,eas-in,linear)-delay-count-direction */
+  animation: kreep 0.7s ease 2s infinite alternate;
+}
+.eventIcon:hover {
+  animation: none;
+}
+/*END BOUNCER*/
+
+/*SHAKER*/
+@keyframes wiggle {
+  2% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  4% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  6% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  8% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  10% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  12% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  14% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  16% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  18% {
+    -webkit-transform: translateX(1px) rotate(0);
+    transform: translateX(1px) rotate(0);
+  }
+  20% {
+    -webkit-transform: translateX(-1px) rotate(0);
+    transform: translateX(-1px) rotate(0);
+  }
+}
+.wiggle {
+  display: inline-block;
+  animation: wiggle 2.7s infinite;
+}
+.wiggle:hover {
+  animation: none;
+}
+/*END SHAKER*/
+
+
+.eventStripName{
+	float: left;/* flex on parent + float & display inline to place icon & name side by side */
+	display:inline-block;
+	width:auto;
+	padding-left:5px;
+	box-sizing:border-box;
+}
+.claimfrom{
+	display:inline-block;
+	margin-bottom:0;
+	text-transform:uppercase;
+}
+.multisrc_claim{
+	cursor:pointer;
+}
+.dropdown {
+	position: relative;
+	top: 10px;
+	width:150px;
+	margin:0px auto;
+	background:url(../img/down-arrow.png) no-repeat right center;
+    background-size: 16px;
+}
+.dropdown-content {
+	font-size: clamp(10px, 1vw, 12px);
+	color:#525252;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 150px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 5px;
+	z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  	display: block;
+}
+.drop_sel:hover{
+	background-color:#dbdbdb;
+	color:#000;
+	font-weight:400;
+	cursor:pointer;
+}
+.benefactor_hold{
+	position: relative;
+	top: 10px;
+
+	margin:0px auto;
+	width:60%;
+}
+#benef_settings{
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:16%;
+	width:17px;
+	height:17px;
+	background:url(../img/wrench.svg) no-repeat center center;
+	background-size:contain;
+	cursor:pointer;
+	border:0.5px solid #94563f;
+	border-radius:22px;
+}
+.beneCurrent{
+	position:relative;
+	display: flex;
+  	flex-wrap: wrap;
+	width:100%;
+	min-width:0;
+	box-sizing:border-box;
+}
+.beneCurrent span{
+	flex-basis:30%;
+	line-height:100% !important;
+	/* this section helps make ellipsis work, with "min-width:0;" set on parent for flex items */
+	text-overflow: ellipsis;
+  	overflow: hidden;
+  	white-space: nowrap;
+	text-align:left;
+	box-sizing:border-box;
+}
+#beneficiaryWallet{
+	flex-basis:65%;
+}
+#removeWallet{
+	position:absolute;
+	top:0;
+	right:0;
+	width:17px;
+	height:17px;
+	border:1px solid #683c2c;
+	border-radius:50%;
+	text-align:center;
+	cursor:pointer;
+	padding: 2px;
+	box-sizing:border-box;
+	line-height:10px !important;
+}
+#submitwallet{
+	flex-basis: 100%; /* forces child element to not behave like part of the flex */
+	color:#FFF;
+	display:block !important;
+}
+.setBeneField{
+	margin:0;
+	padding:0px 10px !important;
+}
+.claimscard_summary{
+	position:relative;
+	width:100%;
+	padding:2% 3%;
+	padding-bottom:0;
+	box-sizing:border-box;
+}
+#claimscard_claim{
+	position:relative;
+	display:block;
+	width:80%;
+	min-width:270px;
+	margin:10px auto;
+	text-align:center;
+	padding:0px;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+.claim_btn{
+	position:relative;
+	width: 100%;
+	height:auto;
+	padding:10px 5px;
+	box-sizing:border-box;
+	cursor:pointer;
+	border-radius:5px;
+	background-color:#616161;
+}
+#claim_fmb{
+    display:none;
+}
+.mccard_right{
+	
+}
+.mccard_right:hover{
+	background-color:#818181;
+}
+.mccard_details{
+	display: flex;
+	flex-wrap: wrap;
+
+	width:100%;
+	border-bottom:0.5px solid #616161;
+	padding:7px 5px;
+	box-sizing:border-box;
+	text-align:left;
+}
+.mccardH{
+	flex-basis:150px;
+}
+._respValue, .mccardD{/* display:inline-flex is making ellipsis not work */
+	flex-basis:auto;
+	flex-grow: 1;
+	text-align: left;
+	padding-left:2%;
+	box-sizing: border-box;
+	border-radius:2px;
+	color: #D1D1D1; /* #BBB - same as state changing action cards, too dark */
+}
+.mccardD{
+	background-color:#2e2e2e;
+}
+.benown{
+	text-align:center !important;
+	padding:5px 2px !important;
+	border:0.5px solid #3F3F3F !important;
+	background-color:#413c3c !important;
+	color:#FFF !important;
+	font-size: clamp(13px, 1vw, 15px) !important;
+}
+.benown:hover{
+	border:0.5px solid #413c3c !important;
+}
+.claims_history{
+	width:100%;
+	margin:10px 0;
+	color:#94563f;
+}
+#show_claims_w, #show_benefactors{
+	cursor:pointer;
+}
+#show_claims_w img, #show_benefactors img{
+  width: 11.5px;
+  padding-left: 4px;
+}
+/* Claim Cards ~ borrowed from bank*/
+.claim_btn{
+	position:relative;
+	width: 100%;
+	vertical-align:middle;
+	box-sizing:border-box;
+	cursor:pointer;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	background-color:#616161;
+}
+.mpcard_details{
+	width:100%;
+	border-bottom:0.5px solid #616161;
+	padding:7px 10px;
+	box-sizing:border-box;
+	text-align:left;
+}
+.mpcard_details span{
+	padding:2px 0;
+	box-sizing:border-box;
+}
+.mpcard_details ._beneD{
+	font-size: clamp(12px, 1vw, 14.5px) !important;
+}
+.mpcard_left .mpcd_last{
+	border:none !important;
+}
+.mbcard_title, .mbcard_detail{
+	width:100%;
+	height:30px;
+	padding:3px 10px;
+	box-sizing:border-box;
+	text-align:left;
+	line-height:20px;
+}
+.mbcard_detail{
+	height:43px;
+	padding-top:3px;
+	padding-bottom:7px;
+}
+.mbcard_more{
+	border-top:0.5px solid #555;
+}
+.mbcard_more_span{
+	display:block;
+	width:100%;
+	padding:2px 2%;
+	box-sizing:border-box;
+	font-family:monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans";
+	font-size: clamp(11px, 1vw, 14px) !important;
+	line-height:1;
+	font-weight:500;
+}
+.mbcard_title #NVLprocessing{
+	float:right;
+	text-decoration:blink;
+	font-size:13px;
+}
+.mbcard_title img {
+  width: 11.5px;
+  padding-left: 4px;
+}
+#show_claims img {
+  width: 11.5px;
+  padding-left: 4px;
+}
+
+/* Claims & Benefactors list shared */
+.clms_case, .donor_case{
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #683c2c;
+	border-radius: 10px;
+}
+.claimsum, .benesum{
+	text-align:center;
+	color: #683c2c !important;
+	font-size:17px !important;
+}
+.clms_case li, .beneLi{
+	list-style:none;
+	border-top:1px solid #555;
+	text-align:left;
+}
+.beneLi:last-child{
+	border-bottom:none;
+}
+.clms_case span, .beneLi span{
+	font: 15px/1.5 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: 15px;
+	font-weight:bold !important;
+	color:#3d3533 !important;
+}
+.beneLi span{
+	padding-right:5%;
+	box-sizing: border-box;
+}
+.claim_tag, .bene_tag{
+	font-weight:600!important;
+}
+.reward_tag{
+	font-size:14.5px;
+	color:#3d3533;
+}
+.tx_tag{
+	display:inline-block;
+	max-width:180px !important;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size:14.5px;
+	font-weight:600!important;
+	float:right;
+}
+.tx_tag a{
+	color:#0089b5;
+}
+.tx_tag a:hover{
+	color:#0089b5 !important;
+	text-decoration:underline;
+}
+
+/* Russian Roulette Wormhole */
+.wormholeTitle{
+	font-size: clamp(13px, 1vw, 15px) !important;
+}
+.letsPlay, .port_beneficiary_hold{
+	background: radial-gradient(#683c2c, #363636);
+}
+#RRwormhole {
+	position:relative;
+	width:100%;
+	height:0;
+	box-sizing: border-box;
+	overflow:hidden;
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(11px, 1vw, 14px) !important;
+	line-height:1.2;
+}
+.rr_play_container, .rouletteHead{
+	position:relative;
+	width:100%;
+	text-align:center;
+}
+.rr_play_container{
+	
+}
+.rouletteHead{
+	width:100%;
+	text-align: justify;
+	text-justify: inter-word;
+	padding:10px 18%;
+	box-sizing: border-box;
+}
+.rouletteHead span h1{
+	text-transform:uppercase;
+	text-align:center;
+}
+#rr_instructions{
+	display:none;
+	vertical-align: middle;
+	position:relative;
+	
+	color: #FFF;
+	text-align: left;
+	padding: 1% 10px;
+	box-sizing: border-box;
+	width:auto;
+	max-width: 500px;
+	letter-spacing: 0;
+	border:2px solid #333;
+	opacity:0.9;
+	background-color:#3d3d3d;
+}
+
+/* Game Card - keep gun effects and merge with rrgame.css */
+.triggerBtnsHold{
+	position:relative;
+	width:100%;
+}
+#pullTrigger, #resetTrigger{
+	position:relative;
+	z-index:10;
+	cursor:pointer;
+}
+#failedModal{
+	background-color:#EEE;
+}
+.pistolwhip{ /* whip cylinder and play sound when you fail */
+	animation: tiltThrow 1s ease 0s 3;
+	transform-origin: center 150px;
+}
+@keyframes tiltThrow{
+  50%{transform: rotate(38deg);}
+}
+
+/* end of shared css for game----
+Start RR Game Holding */
+#inplay_animation{
+	position: absolute;
+	right: 0;
+	top:20px;
+	right:20px;
+	width:20px;
+	height:20px;
+	background:url(../img/eclipse.svg) no-repeat center center;
+	background-size:25px;
+
+	color: #ddd;
+	content: attr(data-bg-text);
+	display: none;
+	font-size: clamp(9px, 1vw, 12px);
+	line-height: 1;
+	opacity: 0.5;
+
+}
+#inplay_animation:before {
+	position: absolute;
+	top:0px;
+	right: 30px;
+	content:"pending..."; 
+	color:#F3F3F3; 
+	font-size: clamp(13px, 1vw, 15px) !important;
+}
+#hodl_game > #openInstruct{
+	position:absolute;
+	top:1%;
+	left:1%;
+	display:block;
+	cursor:pointer;
+	color:#ddd !important;
+	text-transform:uppercase;
+	background-color:#5a3d34;
+	padding:2px;
+	font-size:10px;
+	z-index:5;
+}
+/* gunshot sticker */
+.gun-shot{
+	position: absolute;
+	top:22%;
+	right:10%;
+}
+/* celebration ribbons */
+.confetti{
+   max-width: 640px;
+   display: block;
+   margin: 0 auto;
+   border: 0.5px solid #ddd;
+   user-select: none;
+}
+/* confeti and emojis celebration */
+.wrapper {
+	position:absolute;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.modal {
+	opacity: 1;
+	transition: visibility 0s linear 0s, opacity 300ms;
+
+	visibility: hidden;
+	width: 100%;
+	margin: 0 auto;
+	border: 0.5px solid var(--border-color);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.16);
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 2px;
+	z-index: 1;
+	position: absolute;
+	bottom: 0;
+}
+.emoji {
+	display:block;
+	text-align: center;
+	font-size: clamp(16px, 2vw, 25px) !important;
+	line-height: 25px;
+	transform: scale(0.5);
+	animation: scaleCup 1s infinite alternate;
+	padding-top:3px;
+	box-sizing:border-box;
+}
+
+@keyframes scaleCup {
+  0% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.modal h1 {
+  text-align: center;
+  font-size: clamp(12px, 1vw, 14px) !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@keyframes confettiRain {
+	0% {
+    opacity: 1;
+    margin-top: -800px;
+    margin-left: 50%;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 500px;
+    margin-left: 50%;
+  }
+}
+.confetti {
+  opacity: 0;
+  position: fixed;
+  width: 16px;
+  height: 20px;
+  transition: 500ms ease;
+  animation: confettiRain 5s infinite;
+}
+#confetti-wrapper {
+	position: fixed;
+	width:100%;
+	height:100%;
+	max-height:800px;
+	
+	opacity: 1;
+	transition: visibility 0s linear 0s, opacity 300ms;
+	visibility: hidden;
+}
+.confetiLive{
+	visibility: visible !important;
+}
+
+/* ---------------------------- PORTFOLIO ------------------------------*/
+.portfolioSect{
+	height: auto;
+	border-bottom: 0.5px solid #818181;
+	padding:10px 1.5%;
+	box-sizing:border-box;
+}
+.port_beneCard{
+	position: relative;
+	width: 100%;
+	max-width:450px;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;	
+	border:0.5px solid #555;
+	border-radius:5px;
+	margin: 1%;/* pad all cards */
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(12px, 1vw, 15px) !important;
+	padding:0px;
+	box-sizing:border-box;
+	background-color:#222;
+	caret-color: rgba(0,0,0,0);
+}
+
+.actionablePort, .unactionablePort{
+	position: relative;
+	width: 100%;
+	font-family:monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(11px, 1vw, 14px) !important;
+	line-height:1.5;
+	color:#FFF;
+	background-color: #363636;
+
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: flex-start;
+	-moz-box-pack: center;
+	justify-content: center
+}
+.actionPortLabel{
+	position:relative;
+	display:block;
+	flex-basis:100%;
+	font-size: clamp(15px, 2vw, 18px);
+	text-transform:uppercase;
+	padding:5px 9.5%;
+	box-sizing:border-box;
+	color:#ba765d;
+	color:#94563f;
+	border-bottom:0.5px solid #683c2c;
+	margin-bottom:3%;
+}
+.actionCard{
+	width: 40%;
+	min-width:350px;
+	height:auto;
+	display: flex;
+	flex-direction: column;
+	vertical-align: middle;
+	margin: 1%;/* pad all cards */
+	
+	background-color: #282828;
+	border-radius: 15px;
+	border: 0.5px solid #333;
+}
+.actCardTop{
+	position: relative;
+	width: 100%;
+}
+.actCardTop_title{
+	margin: 0px auto;
+	display:inline-block;
+	width:92%;
+	padding:5px 2%;
+	box-sizing:border-box;
+	font-size: clamp(12px, 1vw, 14px);
+}
+.actCardTop_title .dot{
+	display:none;
+}
+.actCardTop_expand{
+	position:relative;
+	top:10px;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	border: 0.5px solid #333;
+	background:url(../img/down.svg) no-repeat center center;
+	background-size:20px;
+	cursor:pointer;
+}
+.actCardTop_expand:hover{
+	border: 0.5px solid #683c2c;
+}
+.actCardTopData{
+	display:block;
+	width:95%;
+	margin:0px auto 10px;
+	min-height:100px;
+	border-radius:5px;
+	background-color:#3d3d3d;
+	color: #BBB;
+}
+.actCardTopData .mpcard_details{
+	border-bottom:0.5px solid #616161;
+	padding:4px 10px;
+	box-sizing:border-box;
+	text-align:left;
+	font-size: clamp(11px, 1vw, 14px);
+}
+.mybankcard{
+	position: relative;
+	width: 100%;
+	max-width:400px;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+	border:1px solid #333;
+	border-radius:5px;
+	margin: 1%;/* pad all cards */
+	font: 15px/1.5 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+	padding:15px;
+	box-sizing:border-box;
+	background-color: #252525;
+}
+/*
+.mpcard_details:last-child{
+	color:#ff4747;
+	border-bottom:none;
+}
+*/
+/* MPCARD details is overiden from bank.css */
+.mpcard_details{
+	display:flex;
+	flex-wrap: wrap;
+}
+.mpcard_details ._lsrT, .mpcard_details ._beneT{
+	display:inline-flex;
+	width:70px;
+}
+.mpcard_details ._beneT{
+	width:130px;
+}
+.mpcard_details ._lsrTData, .mpcard_details ._beneD{
+	flex: 1;
+	/* this section helps make ellipsis work, with "min-width:0;" set on parent for flex items */
+	text-overflow: ellipsis;
+  	overflow: hidden;
+  	white-space: nowrap;
+}
+._beneD{
+	background-color:#2e2e2e;
+	border-radius:2px;
+}
+/* portfolio state changing input areas */
+.portfolioBtn{
+	font-size: clamp(10px, 1vw, 12px);
+	text-transform:lowercase;
+}
+/*===============================
+      BOTTOM OF EVERY CSS FILE
+=================================
+*/
+#loadOverlay{display: none;}
+.loading_badge_place {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height:15vw;
+  width:15vw;
+  text-align:center;
+  z-index:150;
+}

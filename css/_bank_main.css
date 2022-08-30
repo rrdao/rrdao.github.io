@@ -1,0 +1,490 @@
+@import url("_rbw.css");
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
+#main{
+	overflow-x:hidden;
+}
+/*start by hiding unwanted elements*/
+#russianrouletteSection{
+	display:none !important;
+}
+.windows_shift{
+	font: 15px/1.5 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+}
+section.introbanner{
+	position:relative;
+	width:100%;
+	height:100%;
+	padding:0px 40px;
+	box-sizing:border-box;
+	z-index:2;
+}
+svg{
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 100;
+	width: 100%; height: 100%;
+}
+[id=m] + use {
+  fill: rgb(54, 54, 54);
+	stroke:#683c2c;
+	stroke-width:5;
+}
+.windows_shift{
+	position:relative;
+	margin:0px auto;
+	z-index:200;
+	padding-top:35px;
+	box-sizing:border-box;
+}
+.intro_cont{
+	position:relative;
+	display:block;
+	width:100%;
+}
+.intro_ {
+	display:block;
+	width:auto;
+	height:auto;
+	padding:10px;
+	color: #FFF;
+	font-family: monospace;
+	font-size:1em;
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	white-space:normal; /* nowrap Keeps the content on a single line */
+	/* Gives that scrolling effect as the typing happens */
+	letter-spacing: .15em; /* Adjust as needed */
+	text-align:left;
+	/* effect on border */
+	
+}
+
+span#typewrite {/* effect on span */
+  animation: caret 0.7s steps(10) infinite;
+  border-right: .20em solid; /* The typwriter cursor */
+}
+
+@keyframes caret {
+  from, to { border-color: orange }/* change from black to orange blinking */
+  100% { border-color: #000 }
+}
+#main{
+	background-color: #363636;
+	background: url("../img/bills.jpg") no-repeat, #363636;
+	background-size:cover;
+	background-attachment: fixed;
+	background-position:center -70px;
+}
+#mainwindow{
+	position:relative;
+	padding:0;
+	display: table;
+	width: 100vw;
+	max-width: 80% !important;
+	margin:20px auto;
+}
+#mainwindow{
+	height:auto;
+}
+section.bankhead{
+	position:relative;
+	height: 100%;
+	width: 80%;
+	display: table-cell;	
+	border-collapse:separate !important;
+}
+@media (max-width: 800px){
+  section.bankhead {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+section.claimsSect{
+	height:auto;
+	/* border-bottom:1px solid #818181; */
+}
+section.banksec{
+	height:auto;
+	text-align:center; /* center child container 'mybank' */
+
+	width: 100%;
+	height: auto;
+	padding-bottom: 10px;
+	/* padding: 10px 8%; */
+	box-sizing: border-box;
+	background-color: #363636;
+}
+.myClaims{
+	width:100%;
+	height:auto;
+	padding:10px;
+	box-sizing:border-box;
+	background-color: #363636;
+	background: radial-gradient(#683c2c, #363636);
+	color:#FFF;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:center;
+	padding-bottom:50px;
+}
+.mybank{
+	width:100%;
+	height:auto;
+	padding:10px; /* padding:10px 8%; */
+	box-sizing:border-box;
+	background-color: #363636;
+	color:#FFF;
+	display: inline-block;
+	vertical-align: middle;
+	text-align:center;
+	padding-bottom:50px;
+}
+.mybank_casing{
+	display: inline-block;/* for us to center as child elements of v-align & t-align above */
+	vertical-align: middle;
+	text-align:center;
+	width:100%;
+	max-width:1400px;
+}
+.myClaims h4, .mybank h4{
+	font-family: monospace, sans-serif, Tahoma, Geneva;
+	font-size: clamp(16px, 2vw, 25px) !important;
+	padding:10px;
+	margin:0px;
+	box-sizing:border-box;
+}
+
+
+/* ====================================================================================================================== */
+/* ====================================================================================================================== */
+/* ====================================================================================================================== */
+
+
+.myportfoliocard{
+	position: relative;
+	width: 100%;
+	max-width:450px;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+	
+	
+	border:1px solid #555;
+	border-radius:5px;
+	margin: 1%;/* pad all cards */
+	font: 15px/1.5 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+	padding:0px;
+	box-sizing:border-box;
+	/* background-color:#222; */
+}
+.mybankcard{
+	position: relative;
+	width: 100%;
+	max-width:400px;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+	border:1px solid #333;
+	border-radius:5px;
+	margin: 1%;/* pad all cards */
+	font-family:monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+	line-height:1.5;
+	font-size: clamp(15px, 2vw, 18px);
+	padding:15px;
+	box-sizing:border-box;
+	background-color: #252525;
+}
+#show_buybacks{
+	cursor:pointer;
+}
+.mpcard_left  {
+	position:relative;
+	width:75%;
+	display: table-cell;
+	padding:0px;
+	box-sizing:border-box;
+}
+.claim_btn{
+	position:relative;
+	width: 100%;
+	vertical-align:middle;
+	box-sizing:border-box;
+	cursor:pointer;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	background-color:#616161;
+}
+.play_btn{
+	position:relative;
+	width: 100%;
+	vertical-align:middle;
+	box-sizing:border-box;
+	cursor:pointer;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	background-color:#616161;
+}
+.play_btn span{
+	font-size:12px;
+}
+.mpcard_right{
+	position:relative;
+	width:25%;
+	display: table-cell;
+	border-left:1px solid #666;
+	text-align:center;
+	padding:0px;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+.mpcard_right:hover{
+	background-color:#818181;
+}
+.mpcard_details{
+	width:100%;
+	border-bottom:1px solid #616161;
+	padding:5px 10px;
+	box-sizing:border-box;
+	text-align:left;
+}
+.mpcard_left .mpcd_last{
+	border:none !important;
+}
+.mbcard_title, .mbcard_detail{
+	width:100%;
+	height:30px;
+	padding:3px 10px;
+	box-sizing:border-box;
+	text-align:left;
+	line-height:20px;
+	font-weight:600;
+	color:#94563f;
+}
+.mbcard_detail{
+	height:auto;
+	padding:3px;
+	font-family:monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans";
+}
+.mbcard_detail span{
+	display: block;
+	font-size: clamp(13px, 1vw, 17px);
+	font-weight:100;
+	box-sizing:border-box;
+	color:#DDD;
+	white-space: pre;
+}
+.mbcard_detail .tspan{
+	border-bottom: 0.5px solid #555;
+	white-space: pre;
+}
+.mbcard_more{
+	border-top:0.5px solid #555;
+}
+.mbcard_more_span{
+	display:block;
+	width:100%;
+	padding:2px 2%;
+	box-sizing:border-box;
+	font: 14px/1 monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans";
+	font-weight:500;
+	white-space: pre;/* allows Javascript line break \n to work on cards text */
+}
+.mbcard_title #NVLprocessing{
+	float:right;
+	text-decoration:blink;
+	font-size:13px;
+}
+.mbcard_title img {
+  width: 11.5px;
+  padding-left: 4px;
+}
+#show_claims img {
+  width: 11.5px;
+  padding-left: 4px;
+}
+.rb_detail{
+	
+}
+#usdprice{
+	display:inline-block;
+	float:right;
+	padding-left:10px;
+	box-sizing:border-box;
+	font-size:15px !important;
+	font-weight:400 !important;
+}
+#rbbias{
+	float:right;
+	box-sizing:border-box;
+	text-align:right;
+	font-size:16px !important;
+	font-weight:600 !important;
+}
+._response{
+	font-size:13px !important;
+	text-align:left;
+	padding-left:10px;
+	box-sizing:border-box;
+}
+#mbcard_cap{
+	
+}
+#mbcard_liq{
+	
+}
+
+/* Buy Backs */
+.bbs_case {
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid rgb(237, 238, 242);
+	border-radius: 20px;
+	background-color: rgb(247, 248, 250);
+}
+.bbs_case li{
+	list-style:none;
+	border-bottom:1px solid #CCC;
+	text-align:left;
+}
+.buyback span{
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	color: #797979;
+	color:#333;
+}
+.bb_date{
+	float:right;
+}
+.buyback img{
+	position:relative;
+	top:2px;
+	width:14px;
+}
+.buyback a{
+	color: rgb(1, 154, 210);
+	text-decoration:none;
+}
+
+/* stake success bank only */
+.stakesuccess{
+	position: relative;
+	width:400px;
+	margin:0px auto;
+	display: grid;
+	row-gap: 12px;
+	padding: 1rem;
+	box-sizing: border-box;
+	border: 1px solid rgb(237, 238, 242);
+	border-radius: 20px;
+	background-color: rgb(247, 248, 250);
+	text-align:center;
+	font-size: 17px;
+	color: #797979;
+}
+.stakesuccessnotice{
+	width:100%;
+	margin:0px auto;
+}
+.stakesuccessnotice p{
+	display:inline-block;
+	width:auto;
+	word-wrap:break-word;
+	margin:0px auto;
+}
+.stakesuccessnotice img{
+	margin-left:10px;
+	width:16px;
+	font-size:15px;
+	display:inline-block;
+}
+.stakesuccessduration{
+	color:#000;
+	text-align:center;
+	font-size:20px;
+	font-weight: 500;
+	-moz-box-pack: justify;
+	justify-content: space-between;
+	-moz-box-align: center;
+	align-items: center;
+}
+.stakesuccessetherscan{
+	color: rgb(136, 141, 155) !important;
+	margin: 10px auto;
+	font-size: 14px;
+}
+.stakesuccessetherscan img{
+	width:16px;
+	font-size:15px;
+	display:inline;
+}
+.stakesuccessetherscan a{
+	color: #04C86C !important;
+	margin-left:7px;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: 600;
+}
+.stakesuccessetherscan a:visited{	
+	color: #04C86C !important;
+}
+.stakesuccessetherscan a:hover{	
+	color: #04C86C;
+	font-weight:600;
+	text-decoration:underline;
+}
+.stakepopulate{
+	position:relative;
+}
+
+/* ONE LIL HACK */
+.sweet-alert.show-input input{
+	display:none !important;
+}
+.balancesTable{
+	margin:0px auto;
+}
+.contractpurpose{
+	display:block;
+	padding:2%;
+	margin:0px auto;
+	width:100%;
+	min-width:auto;
+	font: 17px/1.7 monospace, sans-serif, "Helvetica Neue", Arial, "Liberation Sans" !important;
+	font-weight:600;
+	text-transform:uppercase;
+	text-align:left;
+	color:#EAEAEA;
+	border-top: #e5e5e5 1px solid; 
+	padding-bottom:1%;
+	background-color:#363636;
+	border:1px solid #363636;
+	box-sizing:border-box;
+	background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5));
+}
+.contractpurpose img{
+	width:11.5px;
+	padding-right:4px;
+}
+.tab{
+	tab-size:2;
+}
+/*===============================
+      BOTTOM OF EVERY CSS FILE
+=================================
+*/
+#loadOverlay{display: none;}
+.loading_badge_place {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height:15vw;
+  width:15vw;
+  text-align:center;
+  z-index:150;
+}

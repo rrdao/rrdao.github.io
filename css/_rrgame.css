@@ -1,0 +1,293 @@
+#hodl_game{
+	position:relative;
+	display:inline-block;
+	vertical-align: middle;
+	height:600px;
+	width:100%;
+	max-width:500px;
+	min-width:200px;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow:visible !important;
+	
+	font:14px monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	color: #000 !important;
+	background: #683c2c !important;
+	background-image: linear-gradient(to top, #463e3c, #4d3e3a, #543e37, #5a3d34, #603d31, #633d2f, #653c2e, #683c2c, #683c2c, #683c2c, #683c2c, #683c2c) !important; /* light middle */
+}
+.spin{
+	margin:10px auto;
+	cursor:pointer;
+	width:60px;
+	height:38px;
+	border:1px solid #444;
+	text-align:center;
+	line-height:38px;
+	color:#FFF;
+	display:inline-block;
+	background-color:#5a3d34;
+	padding:0px 5px;
+}
+.reset{
+	margin:10px auto;
+	cursor:pointer;
+	width:60px;
+	height:38px;
+	border:1px solid #444;
+	text-align:center;
+	line-height:38px;
+	color:#FFF;
+	display:inline-block;
+	padding:0px 5px;
+	background-color:#5a3d34;
+}
+.rr_result{
+	margin:10px auto;
+	background-color:#333;
+	color:#FFF;
+}
+/* Draw a revolver */
+.gun_holder{
+	position:relative;
+	margin:0px auto;
+	width:216px;
+}
+.revolver{
+	position:relative;
+	width:215.5px;
+	width:180px;
+	height:450px;
+	z-index:200;
+	background-image: url("../img/revolver.png"); /* thumbdefect https://images2.imgbox.com/d8/4e/RLqE6Nwl_o.png */
+	background-size:contain;
+	background-repeat:no-repeat;
+	border:1px solid #573d35;
+}
+.cylinder_cont{
+	position:absolute;
+	top:40px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0px;
+	right: 15px; /* 15px is centered, -270px out of gun */
+	text-align: center;
+	width:130px;
+	height:130px;
+	z-index:100;
+}
+.loader_final {
+  animation: spin_final 10s step-end alternate 3;
+  animation-play-state:play;
+  background: #7f919b;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.loader_wait {
+  animation: spin 3.5s ease-in-out alternate 3;
+  animation-play-state:paused;
+  animation-delay: -.1s; /* 0.5 is wow, */
+  background: #7f919b;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.loader {
+  animation: spin 3.7s ease-in-out alternate 3; /* 3.7 seconds to complete, in sync with 3.1 seconds for Javascript timer */
+  animation-iteration-count: 10;
+  animation-play-state: play;
+  animation-delay: -.1s; /* 0.5 is wow, */
+  background: #7f919b;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.loader:before, .loader_final:before{
+  background: #7f919b;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 0.5em;
+  width: 0.5em;
+  z-index: 2;
+}
+
+.loader:after, .loader_final:after {
+  background: #683c2c;
+  border-radius: 50%;
+  box-shadow: 0em -2.60em #683c2c,
+    2.25em -4.02em #683c2c,
+    2.25em -1.25em #683c2c,
+    4.60em 0em #683c2c,
+    2.25em 1.25em #683c2c,
+    2.25em 4.02em #683c2c,
+    0em 2.60em #683c2c,
+    -2.25em 4.02em #683c2c,
+    -2.25em 1.25em #683c2c,
+    -4.60em 0em #683c2c,
+    -2.25em -1.25em #683c2c,
+    -2.25em -4.02em #683c2c;
+  content: '';
+  display: block;
+  height: 2em;
+  width: 2em;
+}
+
+.inner {
+  animation: load 3.5s ease-in-out alternate 3;
+  border: solid 1.5px #465b5e;
+  border-radius: 50%;
+  height: 1.75em;
+  width: 1.75em;
+  z-index: 1;
+}
+.inner_wait{
+  animation: load 3.5s ease-in-out alternate 3;
+  animation-play-state:paused;
+  border: solid 1.5px #465b5e;
+  border-radius: 50%;
+  height: 1.75em;
+  width: 1.75em;
+  z-index: 1;
+}
+.inner_final{
+  animation: load_final 15s step-end alternate 3; /* 30 seconds loads the bullet late, after it stops rotating */
+  animation-play-state:play;
+  border: solid 1.5px #465b5e;
+  border-radius: 50%;
+  height: 1.75em;
+  width: 1.75em;
+  z-index: 1;
+}
+
+
+.loader_final, .loader_final:before, .loader_final:after, .loader_wait, .loader, .loader:before, .loader:after, .inner, .inner_wait, .inner_final {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@keyframes load {
+  0% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #683c2c,
+      -2.25em 1.25em #683c2c,
+      -2.25em -1.25em #683c2c;
+  }
+  15% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #683c2c,
+      -2.25em 1.25em #683c2c,
+      -2.25em -1.25em #465a5d;
+  }
+  30% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #683c2c,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+  45% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #465a5d,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+  60% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #465a5d,
+      0em 2.60em #465a5d,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+  75% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #465a5d,
+      2.25em 1.25em #465a5d,
+      0em 2.60em #465a5d,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+  90% {
+    box-shadow: 0em -2.60em #465a5d,
+      2.25em -1.25em #465a5d,
+      2.25em 1.25em #465a5d,
+      0em 2.60em #465a5d,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+  100% {
+    box-shadow: 0em -2.60em #465a5d,
+      2.25em -1.25em #465a5d,
+      2.25em 1.25em #465a5d,
+      0em 2.60em #465a5d,
+      -2.25em 1.25em #465a5d,
+      -2.25em -1.25em #465a5d;
+  }
+}
+
+@keyframes load_final {
+  0% {
+    box-shadow: 0em -2.60em #683c2c,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #683c2c,
+      -2.25em 1.25em #683c2c,
+      -2.25em -1.25em #683c2c;
+  }
+  30% {
+    box-shadow: 0em -2.60em #465a5d,
+      2.25em -1.25em #683c2c,
+      2.25em 1.25em #683c2c,
+      0em 2.60em #683c2c,
+      -2.25em 1.25em #683c2c,
+      -2.25em -1.25em #683c2c;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(60deg);
+  }
+  30% {
+    transform: rotate(120deg);
+  }
+  45% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(240deg);
+  }
+  75% {
+    transform: rotate(300deg);
+  }
+  90% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin_final {
+  30% {
+    transform: rotate(60deg);
+  }
+}

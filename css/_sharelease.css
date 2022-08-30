@@ -1,0 +1,496 @@
+#openInstruct{
+	position:relative;
+	width:auto;
+	max-width:120px;
+	height:auto;
+	cursor:pointer;
+	margin:0.4vw;
+	padding:2px;
+	box-sizing: border-box;
+
+	color:#ddd !important;
+	text-transform:uppercase;
+	text-align:center;
+	white-space: nowrap;
+	background-color:#5a3d34;
+	font-size:10px;
+	z-index:5;
+}
+.sl_instructions{
+    position:relative;
+    display:none;
+    width:90%;
+    margin:0px auto;
+    list-style-position: inside;
+	color:#FFF;
+	text-align:left;
+    letter-spacing: 0;
+	
+	/* border effect */
+	/*background-image: linear-gradient(to right, #342d2c, #3f302d, #49322e, #52352e, #5c382d, #5c382d, #5c382d, #5c382d, #52352e, #49322e, #3f302d, #342d2c) !important;
+	*/
+    padding: 1% 10px;
+	box-sizing: border-box;
+	border:2px solid #333;
+	opacity:0.9;
+	background-color:#3d3d3d;
+    transition: all 0.5s ease;
+}
+.actionablePort .actCardBody{ /* atm */
+	position:relative;
+	height:0px;
+	overflow:hidden;
+}
+.screvealer .actCardBody{ /* atm */
+	position:relative;
+	overflow:hidden;
+    background-color:#342d2c;
+   /* background-image: linear-gradient(to bottom, #342d2c, #393231, #3f3635, #443b3a, #4a403f); */
+}
+.shl_max, .submit_delegate_t{
+	display: inline-flex;
+	-moz-box-align: center;
+	align-items: center;
+	-moz-box-pack: center;
+	justify-content: center;
+	position: relative;
+	height:100%;
+	box-sizing: border-box;
+	background-color: transparent;
+	outline: currentcolor none 0px;
+	margin: 0px 6px;
+	cursor: pointer;
+	user-select: none;
+	vertical-align: middle;
+	appearance: none;
+	line-height: 1.75;
+	border-radius: 4px;
+	font-size: 14px;
+	border: 0.5px solid #94563f;
+	color: #94563f;
+	transition: all 0.2s ease 0s;
+	backface-visibility: hidden;
+	text-transform: none;
+	padding: 0px 7px;
+	min-width: unset !important;
+	font-weight: 600;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.shl_header{
+	position:relative;
+	width:100%;
+	border:0.5px solid #333;
+	color:#FFF;
+	padding:1px 3px;
+	box-sizing:border-box;
+}
+.screvealer .shl_header{
+    border:none;
+    padding:0;
+    padding: 5px;
+    padding-left:2%;
+    box-sizing:border-box;
+}
+.createInstr{
+	font-size:12px;
+	text-align: center;
+    color:#EEE;
+}
+#shl_trigger{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color:#683c2c;
+	background-image: linear-gradient(to right, #342d2c, #3f302d, #49322e, #52352e, #5c382d, #5c382d, #5c382d, #5c382d, #52352e, #49322e, #3f302d, #342d2c) !important;
+	cursor:pointer;
+	color:#FFF;
+	z-index:10;
+}
+.shl_triggerB{
+	position:relative;
+	width:100%;
+	height:auto;
+	text-align:left;
+}
+.shl_triggerA{
+	position:absolute;
+	width:100%;
+	height:100%;
+	text-align:center;
+}
+
+/* inputs to delegate or create */
+.shl_delegate, .shl_create{
+    width:auto;
+	padding:0 2px;
+}
+.shl_add_separator{
+	width:100%;
+	border: 0.5px solid #303030;
+	margin:4px auto;
+}
+.shl_inputshold{
+	position: relative;
+	width:auto;
+	padding:1px;
+	box-sizing: border-box;
+	cursor: text;
+	-moz-box-align: center;
+	align-items: center;
+	border-radius: 4px;
+	border: 0.5px solid #94563f;
+}
+.shl_inputshold, .shl_delegate_submit{
+	display:inline-block;
+	vertical-align: middle;
+}
+.shldi{ /* input textfields common class*/
+	padding: 4px 2px;
+	border-radius: 4px;
+	font-family: monospace, sans-serif !important;
+	font-size: clamp(11px, 1vw, 14px);
+	text-align: center;
+	color:#EEE;
+	transition: all 0.2s ease-in-out 0s;
+	box-sizing: border-box;
+	resize:none;
+	overflow:hidden;
+	
+	border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+.shl_inputshold .shl_max{
+	margin:0 1px;
+	padding: 6px 4px;
+	line-height: 1 !important;
+}
+#delegate_amnt, #create_amnt, .shl_max{/* this soley exists to line the two side by side centraly */
+	display:inline-block;
+	vertical-align: middle;
+}
+#delegate_amnt, #create_amnt{
+	width: 120px;
+}
+#create_ethamnt{
+	width:70px;
+}
+#create_duration, #stake_duration{
+	width:50px;
+}
+.shl_delegate_submit, .shl_create_submit, .shl_stake_submit, .portfolioBtn{
+	position: relative;
+	display: inline-flex;
+	min-width: 40px;
+	-moz-box-align: center;
+	align-items: center;
+	-moz-box-pack: center;
+	justify-content: center;
+	
+	padding: 2px 5px;
+	box-sizing: border-box;
+	font-size: clamp(10px, 1vw, 13px);
+	font-weight: 400;
+	color:#EEE;
+	text-decoration: none;
+	line-height: 1.75;
+	letter-spacing:1px;
+
+	cursor: pointer;
+	user-select: none;
+	vertical-align: middle;
+	appearance: none;
+	border: 0.5px solid #683c2c;
+	border-radius: 4px;
+	background-color:#683c2c;
+	transition: all 0.2s ease 0s;
+	backface-visibility: hidden;
+}
+.shl_partA::after, .shl_partB::after {
+    color: #ddd;
+    content: attr(data-bg-text);
+    display: block;
+    font-size: clamp(15px, 1vw, 20px);
+    line-height: 1;
+    position: absolute;
+    right: 1%;
+    opacity:0.5;
+}
+.shl_partA::after{
+    top: 11%;
+}
+.shl_partB::after{
+    bottom: 30%;
+}
+
+/* FADE IN ANIMATIONS ARE SHARED BETWEEN SALOON AND ATM */
+/*=== fadein animation delays  ===*/
+.animate {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.three {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+.four {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+.eight {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+/*==== FADE IN TOP ===*/
+@-webkit-keyframes fadeInTop {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  @keyframes fadeInTop {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  .fadeInTop {
+    -webkit-animation-name: fadeInTop;
+    animation-name: fadeInTop;
+  }
+/*=== FADE IN LEFT ===*/
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+/*==== FADE IN RIGHT ===*/
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+/*=== FADE IN LEFT Big ===*/
+.fadeInLeftBig {
+  -webkit-animation-name: fadeInLeftBig;
+  animation-name: fadeInLeftBig;
+}
+@-webkit-keyframes fadeInLeftBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(-2000px, 0, 0);
+		transform: translate3d(-2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes fadeInLeftBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(-2000px, 0, 0);
+		transform: translate3d(-2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+} 
+/*=== FADE IN RIGHT Big ===*/
+.fadeInRightBig {
+  -webkit-animation-name: fadeInRightBig;
+  animation-name: fadeInRightBig;
+  }
+@-webkit-keyframes fadeInRightBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(2000px, 0, 0);
+		transform: translate3d(2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+@keyframes fadeInRightBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translate3d(2000px, 0, 0);
+		transform: translate3d(2000px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
+/* Share Leases */
+#sl_refreshing{
+    text-align:center;
+    color:#FFF;
+    padding:5px 2%;
+    box-sizing:border-box;
+}
+.sl_refresh{
+    display:block;
+}
+.sl_leases{
+    position:relative;
+    width:99.5%;
+    margin:0px auto;
+	color:#FFF;
+	text-align:center;
+    letter-spacing: 0;
+	border:2px solid #333;
+	opacity:0.9;
+	background-color:#3d3d3d;
+    transition: all 0.5s ease;
+}
+.status_dot{
+    position:relative;
+    display:inline-flex;
+	width: 6px;
+	height: 6px;
+	min-height: 6px;
+	min-width: 6px;
+	margin:0.6vw;
+	border-radius: 50%;
+}
+.status_dot_open{
+	background-color: rgb(255, 255, 255);
+}
+.status_dot_taken{
+	background-color: rgb(39, 174, 96);
+}
+.status_dot_expired{
+	background-color: rgb(255, 174, 96);
+}
+.status_dot_open, .status_dot_taken, .status_dot_expired  {
+    animation: blinker2 0.5s ease-in-out infinite alternate;
+  }
+@keyframes blinker2 { to { opacity: 0.4; } }
+@keyframes blinker {
+  3% {/* 50% default, 0 opacity */
+    opacity: 0.1;
+  }
+}
+.shl_hm_dot {
+    position: relative;
+    display: inline-flex;
+    width: 6px;
+    height: 6px;
+    min-height: 6px;
+    min-width: 6px;
+    margin: 0.6vw;
+    border-radius: 50%;
+}
+.shl_headmark{
+    color:#ddd;
+    opacity:0.5;
+    text-transform:lowercase;
+}
+.leaseItemHM{
+    background-color: #3d3d3d !important;
+}
+li.leaseItem{
+    /* GRID > FLEX */
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr 1fr 1fr 1fr 1fr 1fr auto auto;
+    font-size: clamp(11px, 1vw, 14px);
+    /*center vertical */
+    align-items: center;
+    justify-content: center;
+
+    list-style:georgian;
+    border: 0px solid #616161;
+    box-sizing: border-box;
+    background-color:#342d2c;
+    margin:0px auto;
+	padding-right:0.2vw;
+	box-sizing: border-box;
+}
+li.leaseItem span{
+    padding:0;
+    box-sizing:border-box;
+    text-align:center;
+}
+#_leaseTakeBtn{
+    min-width:30px;
+}
+.lease_tag{
+	border-right:0.5px solid #ddd;
+	border-right:0.5px solid #616161;
+	box-sizing:border-box;
+}

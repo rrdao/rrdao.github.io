@@ -1,0 +1,562 @@
+
+/* RBW RBB POLLS */
+#hypecard_poll, #hypecard_withdrawpoll{
+	position:relative;
+	width: 96%;
+	max-width:590px;
+	min-width: 350px;
+	height: auto;
+	display: inline-flex;
+	flex-direction: column;
+	margin: 2vw;
+	box-sizing:border-box;
+	background-color: #282828;
+	border-radius: 15px;
+	border: 0.5px solid #333;
+
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans" !important;
+	font-size: clamp(11px, 1vw, 14px) !important;
+	color: #FFF;
+	line-height:1;
+}
+.pollCardRBW{
+	display: block;
+	width: 98%;
+	margin: 0px auto 10px;
+	min-height: 100px;
+	border-radius: 5px;
+	background-color: #3d3d3d;
+	color: #BBB;
+	overflow:hidden;
+}
+.pollStandby{
+	position:relative;
+}
+.rbwHold{
+	position:relative;
+	display:flex;
+	flex-wrap:wrap;
+	width:100%;
+	border-right:0.5px solid #616161;;
+	background-color:#282828;
+}
+.RBWbalance{
+	position:relative;
+	display:inline-flex;
+	width:100%;
+	max-width:100px;
+	min-width:75px;
+	flex:1;
+	flex-wrap:wrap;
+	background-color:#282828;
+}
+.RBWbT, .RBWbB{
+	flex-basis:100%;
+	padding: 3px;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: clamp(11px, 1vw, 14px);
+}
+.RBWbT{
+	position:relative;
+	font-weight:600;
+	line-height:1.5;
+}
+.RBWbB{
+	padding: 3px;
+	color:#04C86C;
+}
+.rbwls_rbw, #rbwls_rbw .dot{
+	font-weight:600;
+}
+#rbwls_rbw{
+	position:relative;
+	width:100%;
+    align-items: center;
+
+	border-bottom: 0.5px solid #616161;
+	padding: 3px 7px;
+	box-sizing: border-box;
+	text-align: left;
+	font-size: clamp(11px, 1vw, 14.5px);
+}
+.rbwTitle, .rbwWallet{
+	padding:0 5px !important;
+	box-sizing: border-box;
+}
+.rbwWallet{
+	position:relative;
+	display:inline-flex;
+	width:50%;
+	line-height:30px;
+	text-align:center;
+}
+.rbwWallet a{
+	text-decoration:none;
+}
+#rbwWallet a:hover{
+	text-decoration:underline;
+}
+#rbwls_dispe{
+	position:relative;
+	padding: 4px 8px;
+	box-sizing: border-box;
+	width:100%;
+	display:flex;
+}
+.dispeTitle{
+	width:80px;
+	font-weight:600;
+}
+.dispeAmount{
+	flex-basis:1;
+	white-space: pre;
+}
+.dispeGuage{
+	position:relative;
+	margin-left:8%;
+	display:flex;
+	width:120px;
+	border:0.5px solid #616161;
+	background-color: #683c2c;
+	color:#EEE;
+	text-align:center;
+	font-size: clamp(11px, 1vw, 14px)!important;
+	line-height:1 !important;
+	white-space: nowrap;
+}
+#dispGS_tr, #dispGS_bb{
+	width:50%;
+	height:auto;
+	padding:2px 0;
+	display:inline;
+	box-sizing: border-box;
+	background-color:#4287e9;
+	text-align:center;
+}
+#dispGS_tr{
+	border-right:0.5px solid #616161;
+	background-color:#27AE60;
+}
+/* CUSTOM TOOL TIP CSS
+#dispGS_tr:hover::after, #dispGS_bb:hover::after { tr 616161 border-right:0.5px solid #616161;, bb 70a4f6
+  content: attr(title);
+  padding: 4px 8px;
+  color: #333;
+  position: absolute;
+  left: 0; 
+  top: -40px;
+  white-space: nowrap; 
+  z-index: 20;
+  border-radius: 5px;   
+  box-shadow: 0px 0px 4px #222;  
+  background-image: linear-gradient(#eeeeee, #cccccc);  
+}
+*/
+#rbwls_rbw img{
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+	right:20px;
+	width:15px;
+	height:15px;
+}
+#treWallet img{
+	right:55px;
+}
+.RBWlevels{
+	display:flex;
+	background-color:#282828;
+}
+#dot_lsrD, #dot_lsrStk, #dot_Pol{
+	display:none;
+}
+/* RBB METER STYLES */
+.parent_meter{
+	position:relative;
+	margin:0px auto;
+	width:100%;
+	padding:0;
+}
+.meter_cont{
+	position:relative;
+	width:100%;
+	height:15px;
+	background-color:transparent;
+	z-index:2;
+	overflow:visible;
+}
+#meter_bar{
+	display:none;
+	position:absolute;
+	top:5px;
+	width: 2px;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid #683c2c;
+	 z-index:3;
+}
+#meter_guage{
+	position:relative;
+	width:100%;
+	height:20px;
+	padding:0;
+	border-radius:5px;
+	background-image: linear-gradient(to left, #ff002d, #fe6700, #e4a200, #b1d400, #43ff00);
+	z-index:2;
+}
+.meter_low{
+	position:absolute;
+	top:5px;
+	left:-11px;
+	float:left;
+	font: 13px monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+	font-weight:600 !important;
+}
+.meter_high{
+	position:absolute;
+	top:5px;
+	right:-11px;
+	float:right;
+	font: 13px monospace, sans-serif, "Helvetica Neue", Helvetica, "Liberation Sans"!important;
+	font-weight:600 !important;
+}
+/* RBB */
+.rbbLevelsHold{
+	padding:2%;
+	box-sizing: border-box;
+	line-height:1.5;
+}
+.rbbFigures{
+	width:auto;
+	text-align:center;
+	font-size: clamp(10px, 1vw, 12px) !important;
+}
+.rbbLevel{
+	position: relative;
+	display:inline-block;
+}
+#rbbLevelT, #rbbLevelF{
+	font-size: clamp(12px, 1vw, 15px);
+}
+#rbbLevelT{
+	font-weight:600;
+	width:90px;
+}
+#meter_bar{
+	display:block;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	top:2px;
+	border-bottom: 9px solid #8e523c;
+}
+.wreqsmall{
+	font-size: clamp(12px, 1vw, 14px) !important;
+}
+.rb_detail{
+	height:auto;
+	padding-bottom:0;
+}
+#rbbLevelF{
+	
+}
+#rbbBBS img{
+	width: 11.5px;
+	right:-20px;
+	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.rbbverdict{
+	position:relative;
+	top:-5px;
+	z-index:10;
+}
+/*POLL*/
+.pollingHold{
+	border-top:0.5px solid #616161;
+	padding: 2%;
+	box-sizing:border-box;
+}
+#pollStandby, #pollVotingCard, #pollConclude{
+	display:none;
+}
+#concludePoll, #concludeVote{
+	display:block;
+	text-align:center;
+	padding: 4%;
+	box-sizing:border-box;
+	background-color:#616161;
+	color:#FFF;
+	cursor:pointer;
+	font-weight: 100;
+}
+.standByHold{
+	position:relative;
+	text-align:center;
+}
+#pollEndTime, #pollEndVerd{
+	display: inline-block;
+	vertical-align: middle;
+	padding: 3px 0;
+	box-sizing:border-box;
+}
+#lastPoll{
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	font-size: clamp(10px, 1vw, 12px);
+	margin: 4px 0 8px;
+	box-sizing:border-box;
+}
+.pollButtons{
+	text-align:center;
+}
+#createPoll, #rebalance{
+	width:40%;
+	max-width:100px;
+	height:auto;
+	display:inline-flex;
+	padding: 2px 5px;
+	box-sizing: border-box;
+	border:0.5px solid #683c2c;
+	border: 2px solid #333;
+	background-color:#683c2c;
+	margin:2%;
+	font-weight: 500;
+	color: #EEE;
+	text-decoration: none;
+	line-height: 1.2;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+.votingButtons{
+	color:#FFF;
+	font-weight:600;
+	font-size: clamp(12px, 1vw, 15px);
+	text-align:center;
+	text-transform:uppercase;
+}
+.votingButtons span{
+	display:inline-block;
+}
+.voteWhat{
+	border-bottom:0.5px solid #EEE;
+}
+#voteTreasury, #voteBuyBack{
+	width:100px;
+	border:5px solid #27AE60;
+	display:inline-block;
+	margin:2%;
+	padding:3px;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+#voteBuyBack{
+	border:5px solid #4287e9;
+}
+.voteCount{
+	font-size: clamp(10px, 1vw, 13px);
+}
+#pollinfoview .mpcard_details{
+	border-bottom: 0.5px solid #333;
+	color:#fff;
+}
+#pollinfoview{
+	background-color:#616161;
+	width:95%;
+	margin:0px auto;
+	border-radius:5px;
+}
+#pollinfoview .mpcard_details{
+	position:relative;
+	display:flex;
+	flex-wrap:wrap;
+}
+#pollinfoview ._pollDtitle, #pollinfoview ._pollDValue{
+	display:inline-block;
+	flex-basis:50%;
+	width:50%;
+	text-align:right;
+	padding:0 2%;
+	box-sizing:border-box;
+	color: #BBB;
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+#pollinfoview ._pollDValue{
+	text-align:left;
+	color:#FFF;
+}
+#pollVotingCard{
+	background-image: linear-gradient(to right bottom, #3d3d3d, #383738, #333233, #2f2c2d, #2b2727, #2f2726, #332725, #362723, #422c26, #4f3128, #5b372a, #683c2c);
+	border: 5px solid #683c2c;
+	border-radius: 5px;
+	padding:5px;
+	box-sizing:border-box;
+}
+.pollActiveTitle{
+	padding: 0 0 4px;
+	box-sizing: border-box;
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	font-size: clamp(16px, 2vw, 20px);
+	font-weight:600;
+	letter-spacing:1px;
+	color:#94563f;
+}
+.pollActiveTitle img{
+	margin-left:1%;
+	width:12px;
+	height:12px;
+}
+#voteTreasury, #voteBuyBack{
+	background-color:#373737;
+}
+
+/* separate Treasury Withdrawal Polls
+===================================== */
+
+.requestInfor{
+	position:relative;
+	padding: 10px 8px 5px;
+	box-sizing: border-box;
+	width:100%;
+}
+.requestTitle{
+	display:block;
+	width:100%;
+	font-weight:100;
+	text-align:center;
+}
+.requestAmount{
+	margin-top:20px;
+	display:block;
+	width:100%;
+	font-size: clamp(16px, 2vw, 20px);
+	font-weight:600;
+	letter-spacing:1px;
+	text-align:center;
+}
+.treasurybalance{
+	position:relative;
+	display:inline-flex;
+	width:100%;
+	min-width:75px;
+	flex:1;
+	flex-wrap:wrap;
+	background-color:#282828;
+}
+.trebT, .trebB{
+	flex-basis:100%;
+	padding: 3px;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: clamp(11px, 1vw, 14px);
+}
+.trebT{
+	position:relative;
+	font-weight:600;
+	line-height:1.5;
+}
+.trebB{
+	padding: 3px;
+	color:#04C86C;
+}
+.treLevelsHold{
+	padding:0 2% 2%;
+	box-sizing: border-box;
+	line-height:1.5;
+}
+.treFigures{
+	width:auto;
+	text-align:center;
+	font-size: clamp(10px, 1vw, 12px);
+}
+.mbcard_detail img, .requestverdict img {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+	width: 11.5px;
+	padding-left: 4px;
+}
+/* standby or vote holders*/
+#stampButtons, #withdrawStandby, #withdrawConclude{
+	display:none;
+}
+#concludePoll{
+	display:block;
+	text-align:center;
+	padding: 5%;
+	box-sizing:border-box;
+	background-color:#616161;
+	color:#FFF;
+	cursor:pointer;
+}
+.standByHold{
+	position:relative;
+	text-align:center;
+}
+#pollEndTime, #pollEndVerd{
+	display: inline-block;
+	vertical-align: middle;
+	padding: 3px 0;
+	box-sizing:border-box;
+}
+#lastPoll{
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	font-size: clamp(10px, 1vw, 12px);
+}
+.requestverdict{
+	position:relative;
+	z-index:10;
+}
+/* stamp buttons */
+.stampButtons{
+	color:#FFF;
+	font-weight:600;
+	font-size: clamp(12px, 1vw, 15px);
+	text-align:center;
+	text-transform:uppercase;
+}
+.stampButtons span{
+	margin:0px auto;
+	display:block;
+}
+.stampWhat{
+	border-bottom:0.5px solid #EEE;
+}
+#stampApprove, #stampDecline{
+	width:150px;
+	border:5px solid #683c2c;
+	display:inline-block;
+	margin:2%;
+	padding:3px;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+#stampBuyBack{
+	border:5px solid #683c2c;
+}
+.stampCount{
+	font-size: clamp(10px, 1vw, 13px);
+}
+#approveCount{
+	color:#04C86C;
+}
+#declineCount{
+	color:#ff4747;
+}
