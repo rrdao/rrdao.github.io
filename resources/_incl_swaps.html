@@ -1,0 +1,82 @@
+<section class="swapSect">
+    <div id="tokenswaps" class="tokenswaps">
+        <div class="tokenswaps_casing">
+            <h4>Swap</h4>
+            <div class="swapContainer">
+                <div class="swapcard">
+                    <div id="delegate_expand" class="delegate_expand" title="click to expand">
+                        <img src="img/info.png" title="what it means to delegate? </br>In order to sell tokens into our Uniswap LP, you use our contract as a proxy for the sell. </br>This is done to bypass and go beyond the Uniswap slippage limitation of 50%. </br>Once tokens are delegated, swap your tokens for ETH into your wallet.</br>Russian Roulette winners dont need to use this, as sell tax is only 10% (way less than Uniswap slippage limit)" />
+                        &emsp;Click to toggle sell delegation&emsp;
+                    </div>
+                    <div class="delegatesellcont"><!-- hidden on buy..position relative on sell -->
+                        <div class="delegate_form"><!-- expands to fill card..position absolute -->
+                            <div class="delegate_balances db1"><span class="dbalance">Delegated Bal:&emsp;</span><span id="d_balance" class="dbalance">0.00</span><span id="a_b_name">&emsp;GUN</span></div>
+                            <div class="delegate_balances db2"><span class="dbalance">Wallet Bal:&emsp;</span><span id="dw_balance" class="dbalance">0.00</span><span id="a_b_name">&emsp;GUN</span></div>
+                            <div class="inputFieldHold delegate_inputshold">
+                                <input aria-invalid="false" autocomplete="off" id="d_delegate" placeholder="0.0" type="number" inputmode="decimal" pattern="[0-9]*" class="atmInput shl_delegate_input" >
+                                <button id="submit_delegate_t" class="submit_delegate_t"><span>Delegate</span></button>
+                            </div>
+                            <div class="inputFieldHold delegate_inputshold">
+                                <input aria-invalid="false" autocomplete="off" id="d_withdraw" placeholder="0.0" type="number" inputmode="decimal" pattern="[0-9]*" class="atmInput shl_delegate_input" >
+                                <button id="submit_withdraw_t" class="submit_delegate_t"><span>Withdraw</span></button> 
+                            </div>
+                            <div class="delegatewhy dbalance">
+                                <span>What's delegate? Why delagate? Delegate how?</span></br></br>
+                                <span><b>What's:</b> Assigning our smart contract as your broker to sell your tokens, on Uniswap, at zero charge. Its a work-around Uniswaps limitations, otherwise selling directly on Uniswap fails.</span></br></br>
+                                <span><b>Why:</b> Uniswap is constricting, capping your slippage to 50% max (actually less). Since our sell tax is 90%, we delegate our token smart contract as our proxy to sell into our Uniswap LP, whilst taxing 90% tax beyond Uniswap's limit.</span></br></br>
+                                <span><b>How:</b> Simply type any amount of tokens you want and submit transaction. Delegated and Wallet balances are updated in real time as transactions are submitted.</span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="tokencard" id="tokenA">
+                        <div id="tokenAicon" class="tokenAicon"></div>
+                        <div class="token_delegate">
+                            <span class="wbalance" id="aaa_balance">0.00</span><span class="wbalance" id="token_aaa">eth</span></br>
+                            <div class="inputFieldHold">
+                                <input aria-invalid="false" autocomplete="off" id="tokenAamount" placeholder="0.0" type="number" inputmode="decimal" pattern="[0-9]*" class="atmInput" onkeyup="equatefromkeyDownA()">
+                                <button id="maxTokenA" class="shl_max"><span>MAX</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="switchplacer"><div id="switch"><></div></div>
+                    <div class="tokencard" id="tokenB">
+                        <div id="tokenBicon" class="tokenBicon"></div>
+                        <div class="token_delegate">
+                            <span class="wbalance" id="bbb_balance">0.00</span><span class="wbalance" id="token_bbb">gun</span></br>
+                            <div class="inputFieldHold">
+                                <input aria-invalid="false" autocomplete="off" id="tokenBamount" placeholder="0.0" type="number" inputmode="decimal" pattern="[0-9]*" class="atmInput" onkeyup="equatefromkeyDownB()">
+                                <button id="maxTokenB" class="shl_max"><span>MAX</span></button>
+                            </div>
+                        </div>
+                        <div class="buyNstake">
+                            <input type="checkbox" name="stake180" id="stake180"  value="180" onclick="stakeInformer();"> Buy & Stake 180 days
+                        </div>
+                    </div>
+                    <div id="swapmetrics_cont">
+                        <span id="metrics_loader"></span>
+                        <div id="swapmetrics"></div> <!-- discount tokens, max holding amount, buy/sell tax, rr active -->
+                    </div>
+                    <!-- delegate -->
+                    <div id="delButton">
+                        Delegate
+                    </div>
+                    <!-- swap -->
+                    <div id="swapButton">
+                        Swap
+                    </div>
+                </div>
+                <div id="swapInfo" class="swapInfo">
+                    <div id="swapInfor_head"></div>
+                    <div id="swapInfo_body"></div>
+                </div>
+            </div>
+            
+            <div class="trade_list_cont">
+                <div id="trade_list"></div>
+                <div id="fetch_trades">fetch past trades...</div>
+                <div id="fetching_trades" style="display:none;">fetching trades...</div>
+                <div id="more_trades" style="display:none;">load more...</div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,91 @@
+<!-- POLLING -->
+
+    <div class="pollCardRBW"><!-- card infor -->
+        <div class="inforview">
+            <div class="RBWlevels">
+                <div class="rbwHold">
+                    <div class="mpcard_details" id="rbwls_rbw">
+                        <div id="dot_Pol" class="dot blockel"></div><span class="rbwTitle"><b>RBW:</b></span><span id="rbwWallet" class="rbwWallet"> 0x00...<img src="img/external.svg" /></span>
+                    </div>
+                    <div id="rbwls_dispe">
+                        <span class="dispeTitle">Dispersed:</span>
+                        <span id="dispeAmount" class="dispeAmount">---</span>
+                        <span class="dispeGuage"><!-- guage sides contents & width from javascript -->
+                            <span id="dispGS_tr" title="sent to treasury">0%</span>
+                            <span id="dispGS_bb" title="used on buybacks">0%</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="RBWbalance">
+                    <div class="RBWbT">RBW bal</div>
+                    <div id="RBWbB" class="RBWbB">0.000eth</div>
+                </div>
+                <!-- 0. RBW ETH balance, dispersed to date: bb vs treasury 
+                1.rbb breakdown{NVL & BuyBacks}, 
+                2.rbb meter, 3.verdict: polling range/ auto-rebalancing range -->
+            </div>
+            <div class="rbbLevelsHold">
+                <div class="rbbFigures">
+                    <span id="rbbLevelT" class="rbbLevel">RBB Level:</span>
+                    <span id="rbbLevelF" class="rbbLevel">1</span>
+                </div>
+                <div class="rbbFigures">
+                    <span id="rbbNVL" class="rbbLevel rbbLsmall">{NVL 0.00eth}</span>
+                    <span id="rbbBBS" class="rbbLevel rbbLsmall">{BBS 0.00eth}</span>
+                </div>
+                <div class="mbcard_detail rb_detail">
+                    <div class="parent_meter">
+                        <div id="meter_guage">
+                            <span class="meter_low">1</span>
+                            <span class="meter_high">2</span>
+                        </div>
+                        <div class="meter_cont">
+                            <div id="meter_bar"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rbbFigures rbbverdict">
+                    <span class="rbbLevel rbbLsmall">status:</span>
+                    <span id="rbbBBS" class="rbbLevel rbbLsmall"><span id="rbbVerdict">{waiting for range..}</span> <img src="img/info.png"  title="Rebalancing Wallet (RBW) is depended on RBB (Rebalancing Bias = NVL/ Total BuyBacks). Ideally we want to BuyBack all the ETH lost from the Liquidity Pool, Ideal RBB = 1. The RBW automatically prevents itself from going below 1, and above 1.5. At 1.5 the RBW automatically triggers a BuyBack without going to a vote, aiming for 1.25 RBB (Median). At 1 we automatically foregore RBW Eth to the Treasury so that LP sells build up the NVL to take us above 1 RBB. Anyone can trigger this. Once we fall to Median RBB 1.25, or anything above 1 and below 1.5, the polling range is activated, the community decides where RBW Eth will be assigned. You can only create poll between RBB 1 & 1.5. Trying to create a poll outside of this range will trigger an Automatic Rebalancing to median 1.25 RBB. To Vote users need to hold at least 1000 GUN tokens, and anyone can trigger auto_rebalancing or create a poll, or vote in one, or conclude a poll that has expired, holding more is irrelevant all wallets are equal. Holders are in total control of where the funds are delegated, here- owners have no control whatsoever besides setting polling frequency (in main contract owner can only set: max-holdings, RR odds, service fees, taxes and discounts."></span>
+                </div>
+            </div>
+        </div>
+        <div class="pollButtons">
+            <div id="createPoll">Create Poll#</div>
+            <div id="rebalance">Auto-Rebalance</div>
+        </div>
+        <div class="pollingHold">
+            <span id="lastPoll" class="lastPoll">Last Poll: ---</span>
+            <div id="pollStandby" class="standByHold">
+                <span id="standByTxt" class="standBy">No Active Poll</span>
+            </div>
+            <div id="pollConclude" class="standByHold">
+                <span id="pollEndTime" class="standByEnded">Poll Ended</span>
+                <span id="pollEndVerd" class="rbbLsmall">Verdict:</span>
+                <div id="concludePoll" class="standBy">Conclude Poll</div>
+            </div>
+            <div id="pollVotingCard">
+                <span class="pollActiveTitle">rebalanceVote <span id="pollID">#</span><img src="img/info.png" title="vote on where to assign funds, at least 1000 tokens needed to vote. One wallet one vote. Each poll is time limited and participant/wallet unlimited, i.e. conclusion is depended poll expiry on condition at least 20 people voted, no max. After a poll expires, there is a 10min cool down to create a new one. Anyone can conclude a just ended poll, triggering funds transfer, and create a new one. Each poll requires at least 20 wallets to participate. Voting will keep open until 20 wallets have voted."></span>
+                <div id="pollinfoview" class="inforview">
+                    <div class="mpcard_details"><span class="_pollDtitle">Eth Voted On:</span><span class="_pollDValue" id="_pollETHINQ">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Poll Creator:</span><span class="_pollDValue" id="_pollCREATOR">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Starting RBB:</span><span class="_pollDValue" id="_pollRBB">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Polling Freq:</span><span class="_pollDValue" id="_pollFREQ">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Poll Started:</span><span class="_pollDValue" id="_pollSTART">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Poll Expires:</span><span class="_pollDValue" id="_pollEXPIRY">---</span></div>
+                    <div class="mpcard_details"><span class="_pollDtitle">Next Poll:</span><span class="_pollDValue" id="_pollTIMETONEXT">---</span></div>
+                </div>
+                <div class="votingButtons">
+                    <div id="voteTreasury">
+                        <span class="voteWhat">Vote Treasury</span>
+                        <span id="trVoteCount" class="voteCount">0</span>
+                    </div>
+                    <div id="voteBuyBack">
+                        <span class="voteWhat">Vote Bonfire</span>
+                        <span id="bnVoteCount" class="voteCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
