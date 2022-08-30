@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Saloon</title>
+<link rel="stylesheet" type="text/css" href="css/_menu.css">
+<link rel="stylesheet" type="text/css" href="css/_saloon.css">
+<link rel="stylesheet" type="text/css" href="css/sweetalert/sweetalert.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script type="text/javascript" src="js/_walletstatus.js"></script>
+<script type="text/javascript" src="js/_rurodappinducks.js"></script>
+<script type="text/javascript" src="js/_sharelease.js"></script>
+<script type="application/javascript" src="js/sweetalert/sweetalert.min.js"></script>
+
+<script>
+//Responsive Nav
+function updatemenu() {
+  if (document.getElementById('responsive-menu').checked == true) {
+    document.getElementById('menu').style.borderBottomRightRadius = '0';
+    document.getElementById('menu').style.borderBottomLeftRadius = '0';
+  }else{
+    document.getElementById('menu').style.borderRadius = '0px';
+  }
+}
+
+//TYPEWRITER
+document.addEventListener('DOMContentLoaded',function(event){
+	// array with texts to type in typewriter
+	var dataText = ["Welcome to the Community Saloon. The town's hangout and trade hub.","Find monthly rucurring contracts here and boost your income to buy more tokens.","Explore Leases and Share Bidding opportunities as listed by the community.","This is a demo page, more features will be enabled in due course, see the timeline for ETAs."];
+	// type one text in the typwriter
+	// keeps calling itself until the text is finished
+	function typeWriter(text, i, fnCallback) {
+		// chekc if text isn't finished yet
+		if (i < (text.length)) {
+			// add next character to h1
+			document.querySelector(".intro_").innerHTML = text.substring(0, i+1) +'<span id="typewrite" aria-hidden="true"></span>';
+			// wait for a while and call this function again for next character
+			setTimeout(function() {
+				typeWriter(text, i + 1, fnCallback)
+			}, 100);
+    	}
+		// text finished, call callback if there is a callback function
+		else if (typeof fnCallback == 'function') {
+		// call callback after timeout
+		setTimeout(fnCallback, 700);
+		}
+	}
+	// start a typewriter animation for a text in the dataText array
+	function StartTextAnimation(i) {
+		if (typeof dataText[i] == 'undefined'){
+			setTimeout(function() {
+				StartTextAnimation(0);
+			}, 20000);
+		}else{
+			// check if dataText[i] exists
+			if (i < dataText[i].length) {
+				// text exists! start typewriter animation
+				typeWriter(dataText[i], 0, function(){
+				// after callback (and whole text has been animated), start next text
+				StartTextAnimation(i + 1);
+				});
+			}
+		}
+	}
+	// start the text animation
+	StartTextAnimation(0);
+});
+</script>
+</head>
+<body>
+	<main id="main">
+    <nav id='menu'>
+      <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+      <ul>
+        <li class="go_home"><a href='index.html'><img src="img/cactus.png" alt="Logo" class="block-header-logo__image"></a></li>
+        <div class="chainstat">
+            <div id="blocknumber" class="blockel">-------</div><div class="dot blockel"></div>
+        </div>
+        <div class="menu_float">
+            <li><a href='saloon.html'>Saloon</a></li>
+          <li><a href='bank.html'>Bank</a></li>
+        </div>
+      </ul>
+    </nav>
+    <aside id="leftpaner">
+        <div class="sal_navs_hold">
+            <div class="saloonnavs" id="sal_main">Main Contract</div>
+            <ul id="sal_ul_main">
+                <li id="rrofficial"><span>Russian Roulette DAO's Official Token Contract</span><span class="due">Infinity</span><span class="dot_active"></span></li>
+            </ul>
+        </div>
+        <div class="sal_navs_hold">
+          <div class="saloonnavs" id="sal_deriv">Saloon Contracts</div>
+            <ul id="sal_ul_sal">
+                <li id="suddendeath"><span>Sudden Death: I'm not fucking selling</span><span class="due">Pending | 1 Sept</span><span class="dot_offline"></span></li>
+                <li id="topholder"><span>Top Holder Wins Treasury</span><span class="due">Pending | 1 Oct</span><span class="dot_offline"></li>
+                <li id="chainreaction"><span>Last man standing: Gun sling chain reaction</span><span class="due">Pending | 1 Nov</span><span class="dot_offline"></li>
+            </ul>
+        </div>
+        <div class="separator_"></div>                
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts" id="sn_c_sl"><span>Share Leasing</span></div>
+        </div>
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts comingsoon" id="sn_c_sb"><span>Share Bidding</span></div>
+        </div>
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts comingsoon" id="sn_c_c"><span>Charity Cause</span></div>
+        </div>
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts comingsoon" id="sn_c_gs"><span>Gun Sling</span></div>
+        </div>
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts comingsoon" id="sn_c_af"><span>Alpha Feed</span></div>
+        </div>
+        <div class="sal_navs_hold sal_feature">
+            <div class="sn_contracts comingsoon" id="sn_c_m"><span>Comic/NFTs</span></div>
+        </div>
+    </aside>
+        
+	<!-- NAVIGATION TABS -->
+
+  <section>
+      <div id="header_cont">
+        <div class="blockstatehold" id="blockstatehold">
+            <div class="showingshold">
+                <div class="wallets walletpur" style="display:none;">
+                    <div class="wallet_tab">
+                        <span id="wallet_balance">...</span><img src="img/walletimg.svg" /><span id="wallet_id">0x...</span>
+                    </div>
+                </div>
+                <div class="wallets waiting_init">-----</div>
+                <div class="wallets wallet_connect">Connect Wallet</div>
+                <div class="wallets network_switch">Switch Network</div>
+            </div>
+        </div>
+        <div id="mainwindow">
+          <section class="introbanner">
+              <svg>
+                  <mask id='m' fill='#fff'>
+                  <rect id='r' width='100%' height='100%'/>
+                  <circle id='c' r='40' fill='#000'/>
+                  <use xlink:href='#c' x='100%'/>
+                  <use xlink:href='#c' y='100%'/>
+                  <use xlink:href='#c' x='100%' y='100%'/>
+                  </mask>
+                  <use xlink:href='#r' fill='#000' mask='url(#m)'/>
+              </svg>
+              <div class="introbanner_insider">
+                  <span class="bannerspan"><h1>The Saloon</h1></span>
+                  <div class="intro_cont"><div class="intro_"></div></div>
+              </div>
+          </section>
+        </div><!-- mainwindow -->
+      </div>
+
+      <div class="windows_shift" id="maincontract_win">
+        <div class="contractpurpose">
+              <span class="contractpurpose_head"><h1>Main Contract R.R.Dao </h1></span>
+              <span class="contractpurpose_details">
+              <p>> Pioneering inbuilt anti-dump mechanisms & sell pressure bottlenecks: </br>90% sell tax on ordinary days, 1/6 odds to whitelist for 10% sell tax, share bidding as parallel liquidity unlocking platform.</p>
+              <p>> Sell through our contract's Proxy Dex to bypass Uniswap's 50% slippage limitation. Those whitelisted for 10% sell tax can sell both through Uniswap and our Proxy Dex.</p>
+              <p>> LP value lost is replaced through buy backs. Since Tax is 90% the goal is to buyback all eth lost from the LP per sell. 90% lost on RR day for scheduled wallets. 10% lost outside of RR day for unscheduled wallets.</p>
+              <p>> The High Sell Tax means value gets left behind when an unscheduled sell happens, last man standing wins.</br>
+              - Buying frenzy - holders win</br>
+              - Price hovers - holders win</br>
+              - Sell frenzy - holders win</p></br>
+              <p>> 5% reflections, from buy transactions. All other rewards come from Treasury profits or donations directly to the community. Rewards can stay unclaimed and not be lost.</p></br>
+              <p>> Rewards can be claimed from: wallet tokens, staked tokens, share lease occupied. Rewards are calculated on circulating supply not total like other projects, hence each burn or unscheduled sell (90%) results in larger rewards for holders.</p></br>
+              <p>> Buy and stake automatically through our proxy dex to earn special privileges like: automatic whitelisting for 10% sell tax if you stake 180 days, buy at a 5% discount compared to Uniswap prices.</p></br>
+              <p>> Supply is fixed, all tokens sold are burnt. For an unscheduled sell (90%) only 10% end up in the LP, but is bought back by the Community RBW and value lost (NVL) replaced. Leaving the next batch of sellers unaffected.</p></br>
+              <p>> Taxes are collected in tokens, <b><u>BUT</u></b> unlike others are <b><u>NOT</u></b> stealthily liquidated into the LP for eth with every sell transaction. They are instead liquidated through buys on our Proxy Dex and send to the Rebalancing Wallet (RBW).</p></br>
+              <p>> RBW funds are deployed automatically or through polls by the community, with amounts responsive to Buy or Sell pressures in the LP:</p>
+              <p>&emsp;<img title="High Sell Pressure Days" src="img/info.png" />HSP period - RBW funnels funds to buy backs until rebalance bias falls between 1.5 and 1.</p>
+              <p>&emsp;<img title="Low Sell Pressure Days" src="img/info.png" />LSP period - RBW funnels funds to the farming treasury.</p>
+              <p>&emsp;<img title="Russian Roulette Day" src="img/info.png" />On RR day - 10/10% to buy backs on HSP days, or to treasury on LSP days.</p>
+              </br>
+              <p>> Do more with your tokens under share bidding: sell, rent out, trade future cashflows, etc</p></br>
+              <p>> You can assign beneficiaries to your rewards, and the beneficiary can claim your rewards.</p></br>
+              <p>> Rent out your tokens, normally you own to earn, here we introduce rent-out to earn, in order to give holders more liquidity options.</br>
+              <p>> Boost your  holdings by gun slinging or gambling against other investors.</p></br>
+              <p>> Vote on causes and DAO decisions or elections using your shares to control your own fate.</p></br>
+              <p>> New arbitrage contracts, or rewards from future ventures will be exclusive to main token holders only.</p></br>
+              <p>> **THIS IS PHASE 1. See timeline for phase 2.</p></br>
+              </span>
+          </div>
+          <div class="contractbtns_hold">
+            <div id="contr_addy" class="cb_contract contractbtns" onclick="CopyToClipboard('contr_addy')" title="click to copy!">Contract add</div><div class="cb_dextools contractbtns">Dextools</div><div class="cb_uniswap contractbtns">Uniswap</div>
+          </div>
+          <div class="tablecont">
+          <table class="contractsummarytable" cellpadding="10" cellspacing="1" style="table-layout:fixed;">
+              <tbody>
+              <tr id="" class="">
+              <td class="mapspec">Duration</td><td class="mapvalue">Continuous</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Sell Tax</td><td class="mapvalue">90% ~ variable</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Buy Tax</td><td class="mapvalue">15% ~ constant</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Reflections</td><td class="mapvalue">5% ~ [from buy tax]</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Treasury</td><td class="mapvalue">[dao vote -or- auto level triggers]</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Buy Backs</td><td class="mapvalue">[dao vote -or- auto level triggers]</td>
+              </tr>
+              <tr id="" class="">
+              <td class="mapspec">Russian Roulette Day</td><td class="mapvalue">every Saturday ~ RR winners 10% Sell Tax.</td>
+              </tr>
+              </tbody>
+              </br>
+              <tr>
+                <td colspan=2>
+                  <div class="my_box">
+                    <p>Contract Metrics.</p>
+                  </div>
+                </td>
+              </tr>
+              <tbody>
+              <tr id="mapN" class="">
+              <td class="mapspec">Token Name</td><td id="mapN_loadstat" class="loadstatTD"><div class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></div></td>
+              </tr>
+              <tr id="mapTS" class="">
+              <td class="mapspec">Total Supply</td><td id="mapTS_loadstat" class="loadstatTD"><div class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></div></td>
+              </tr>
+              <tr id="mapCS" class="">
+              <td class="mapspec">Circ Supply</td><td id="mapCS_loadstat" class="loadstatTD"><div class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></div></td>
+              </tr>
+              <tr id="mapH" class="">
+              <td class="mapspec">Holders</td><td id="mapH_loadstat" class="loadstatTD"><div class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></div></td>
+              </tr>
+              <tr id="mapFC" class="">
+              <td class="mapspec">Fees Cashed</td><td id="mapFC_loadstat" class="loadstatTD"><span class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></span></td>
+              </tr>
+              <tr id="mapRB" class="">
+              <td class="mapspec">Rebalanced</td><td id="mapRB_loadstat" class="loadstatTD"><span class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></span></td>
+              </tr>
+              <tr id="mapR" class="">
+              <td class="mapspec">Rewards Issued</td><td id="mapR_loadstat" class="loadstatTD"><span class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></span></td>
+              </tr>
+              <tr id="mapTW" class="">
+              <td class="mapspec">Treasury Wallet</td><td id="mapTW_loadstat" class="loadstatTD"><span class="loadstat"><img src="https://images2.imgbox.com/35/f9/SA4ZsCBK_o.gif" /></span></td>
+              </tr>
+              
+              </tbody>
+          </table>
+          </div>
+      </div>
+      <!--=================================================================== -->
+      <div class="windows_shift" id="saloon_win" style="display:none;">
+          <div id="screvealer1" class="screvealer" style="display:none;">
+              <span class="contractpurpose"><p>Temporary Sample Saloon Contract (sample)</p><h1>i'm not fucking selling.</h1></br>30 day contract only. At a random date into the contract, a snapshot is taken and top 100 win the whole treasury and can also sell tax free 0% for 23hours. Before, everyone else is then allowed to sell in order to conclude the contract. </br>You need to hold GUN tokens to buy into this contract.</br> After snapshot and draw, in last hour, tax becomes zero and its sudden death to dump.</span>
+              <div class="tablecont">
+              <table class="contractsummarytable" cellpadding="10" cellspacing="1">
+                  <tbody>
+                  <tr id="" class="">
+                  <td class="mapspec">Duration</td><td class="mapvalue">30 days</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Sell Tax</td><td class="mapvalue">80% ~ variable</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Buy Tax</td><td class="mapvalue">20% ~ constant</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Reflections.div</td><td class="mapvalue">10% from(buy tax)</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Treasury.div</td><td class="mapvalue">10% from(buy tax), 100% from (sell tax)</td><!-- someone can choose to wait for the dump to happen knowing all taxes will be up for collection as rewards -->
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Low Tax Day</td><td class="mapvalue">last day of month.</td>
+                  </tr>
+                  </tbody>
+                  </br>
+                  <tr>
+                    <td colspan=2>
+                      <div class="my_box">
+                        <p>Contract Matrics.</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tbody>
+                  <tr id="smapN" class="">
+                  <td class="mapspec">Token Name</td>
+                  </tr>
+                  <tr id="smapTS" class="">
+                  <td class="mapspec">Total Supply</td>
+                  </tr>
+                  <tr id="smapH" class="">
+                  <td class="mapspec">Holders</td>
+                  </tr>
+                  <tr id="smapB" class="">
+                  <td class="mapspec">Bandits</td>
+                  </tr>
+                  <tr id="smapR" class="">
+                  <td class="mapspec">Reflections Paid</td>
+                  </tr>
+                  <tr id="smapTW" class="">
+                  <td class="mapspec">Treasury Wallet</td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </div><!-- screenreveal -->
+          <div id="screvealer2" class="screvealer" style="display:none;">
+              <span class="contractpurpose"><p>Temporary Sample Saloon Contract (sample).</p><h1>Top Holder for every 50 wallets wins an equal portion of the Treasury.</h1>Should easily be verified through etherscan holders list. </br>You need to hold GUN tokens to buy into this contract. </br>Treasury is awarded to each wallet that starts the next 50 list of holders, as of 12pm UTC last day. </br> Tax free day is on last day of the month.</br> After draw of top holders, tax becomes zero and its sudden death to dump.</span>
+              <div class="tablecont">
+              <table class="contractsummarytable" cellpadding="10" cellspacing="1">
+                  <tbody>
+                  <tr id="" class="">
+                  <td class="mapspec">Duration</td><td class="mapvalue">30 days</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Sell Tax</td><td class="mapvalue">90% ~ variable</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Buy Tax</td><td class="mapvalue">15% ~ constant</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Reflections.div</td><td class="mapvalue">10% [buy tax]</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Treasury.div</td><td class="mapvalue">5% [buy tax], 90%[sell tax]</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Buy Backs.div</td><td class="mapvalue">0%</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Low Tax Day</td><td class="mapvalue">last day of month.</td>
+                  </tr>
+                  </tbody>
+                  </br>
+                  <tr>
+                    <td colspan=2>
+                      <div class="my_box">
+                        <p>Contract Matrics.</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tbody>
+                  <tr id="smapN" class="">
+                  <td class="mapspec">Token Name</td>
+                  </tr>
+                  <tr id="smapTS" class="">
+                  <td class="mapspec">Total Supply</td>
+                  </tr>
+                  <tr id="smapH" class="">
+                  <td class="mapspec">Holders</td>
+                  </tr>
+                  <tr id="smapB" class="">
+                  <td class="mapspec">Bandits</td>
+                  </tr>
+                  <tr id="smapR" class="">
+                  <td class="mapspec">Reflections Paid</td>
+                  </tr>
+                  <tr id="smapTW" class="">
+                  <td class="mapspec">Treasury Wallet</td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </div><!-- screenreveal -->
+          <div id="screvealer3" class="screvealer" style="display:none;">
+              <span class="contractpurpose"><p>Temporary Sample Saloon Contract (sample).</p><h1>Gunsling chain reaction.</h1>Everyone must gun sling their tokens against other holders, the last man with all the stash will get to sell it all tax free. If you dont gun sling you wont be able to sell. Only wallets that have gun slinged at least $100 can sell tax free on last day.</span>
+              <div class="tablecont">
+              <table class="contractsummarytable" cellpadding="10" cellspacing="1">
+                  <tbody>
+                  <tr id="" class="">
+                  <td class="mapspec">Duration</td><td class="mapvalue">30 days</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Sell Tax</td><td class="mapvalue">80% ~ variable</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Buy Tax</td><td class="mapvalue">20% ~ constant</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Reflections.div</td><td class="mapvalue">10% [buy tax]</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Treasury.div</td><td class="mapvalue">10%</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Buy Backs.div</td><td class="mapvalue">0%</td>
+                  </tr>
+                  <tr id="" class="">
+                  <td class="mapspec">Low Tax Day</td><td class="mapvalue">last day of month.</td>
+                  </tr>
+                  </tbody>
+                  </br>
+                  <tr>
+                    <td colspan=2>
+                      <div class="my_box">
+                        <p>Contract Matrics.</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tbody>
+                  <tr id="smapN" class="">
+                  <td class="mapspec">Token Name</td>
+                  </tr>
+                  <tr id="smapTS" class="">
+                  <td class="mapspec">Total Supply</td>
+                  </tr>
+                  <tr id="smapH" class="">
+                  <td class="mapspec">Holders</td>
+                  </tr>
+                  <tr id="smapB" class="">
+                  <td class="mapspec">Bandits</td>
+                  </tr>
+                  <tr id="smapR" class="">
+                  <td class="mapspec">Reflections Paid</td>
+                  </tr>
+                  <tr id="smapTW" class="">
+                  <td class="mapspec">Treasury Wallet</td>
+                  </tr>
+                  </tbody>
+                  </table>
+              </div><!-- tablecont -->
+          </div><!-- screenreveal -->
+      </div><!-- windowshift -->
+      <!--=================================================================== -->
+      <div class="windows_shift" id="sharelease_win" style="display:none;">
+        <div id="win_sharelease" class="sfrevealer">
+          <div class="contractpurpose">
+              <span class="contractpurpose_head"><h1>Share Leasing</h1></span>
+              <span class="contractpurpose_details">
+              <p>Rent out your tokens for a period to another wallet, at an agreed fee, they will collect all rewards during that period. Get future rewards today.</p>
+              </span>
+          </div>
+          <div id="sl_instructions" class="sl_instructions animate">
+              <p><b>Whats share leasing? and why?</b></p></br>
+              <p>We have a 90% Sell Tax to discourage liquidating into the LP, but sometimes holders want to just get a small amount of liquidity from their tokens, and aggregated token rewards could be enough to cover it.</p>
+              <p>Thats where Share Leasing comes in, you can ask for future ETH rewards today, at a discount ofcourse since the other party needs a benefit. This means your estimates 
+                of what your rewards will be after a certain period, and the discount you are offering today leaves the taker in decent profit, how you calculate it is up to you.
+              </p>
+              <p>This is a willing renter willing taker scenario, at an agreed price for a duration of time.</p>
+              </br>
+              <p><b>How to create a share lease: </b></p>
+              <li>You first have to delegate to the smart contract, the amount of tokens you want to rent out.</li>
+              <li>Next you create the share lease: the amount of tokens you want to use, the duration you want to rent out for, and the once of ETH payment you are asking from any takers.</li>
+              <li>Your share lease immidietly appears below with other listed vacant leases. You can cancel it any time before its taken.</li>
+              </br>
+              <p><b>Taker instructions: </b></p>
+              <li>You can scroll through the list of listed share leases below, before they are taken they have the "take lease" button.</li>
+              <li>You then sign the transaction, make sure your wallet has the minimum ETH being asked for the lease.</li>
+              <li>On confirmation the lease tokens are yours, and you can immidietly start claiming daily rewards from it to recoup your costs, and eventually profit.</li>
+              <li>You can view your lease on the portfolio dashboard, and claim or conclude it from there.</li>
+              </span>
+          </div>
+          <div  id="shlcBody" class="actCardBody"><!-- expandable form section -->
+						<!-- place form here -->
+						<div class="shl_header"><!-- create, your delegated total, delegate -->
+              <div id="openInstruct" title="click to open or close instructions"><i class='far fa-file-alt'></i> toggle instructions</div>
+							<div class="shl_delegate shl_partA" data-bg-text="::stage 1">
+								<div class="shl_inputshold">
+									<input aria-invalid="false" autocomplete="off" id="delegate_amnt" placeholder="tokens" type="number" pattern="[0-9]*" class="shldi shl_delegate_input" >
+									<button class="shl_max"><span id="shlDmax">MAX</span></button>
+								</div>
+								<button id="delLease" class="shl_delegate_submit"><span>Delegate</span></button>
+							</div>
+							<div class="shl_add_separator"></div>
+							<div class="shl_create shl_partB" data-bg-text="::stage 2">
+                <span id="shlDbal"> delegated bal---</span></br>
+								<div class="shl_inputshold">
+									<input aria-invalid="false" autocomplete="off" id="create_amnt" placeholder="tokens" type="number" pattern="[0-9]*" class="shldi shl_create_input" >
+									<button class="shl_max"><span id="shlCmax">MAX</span></button>
+								</div>
+								<div class="shl_inputshold">
+									<input aria-invalid="false" autocomplete="off" id="create_ethamnt" placeholder="eth ask" type="number" pattern="[0-9]*" class="shldi shl_create_input" >
+								</div>
+								<div class="shl_inputshold">
+									<input aria-invalid="false" autocomplete="off" id="create_duration" placeholder="duration" type="number" pattern="[0-9]*" class="shldi shl_days_input" title="days, duration of the lease, whole numbers only, 255 max" >
+								</div>
+								<button id="createLease" class="shl_create_submit"><span>Create</span></button>
+							</div>
+						</div>
+						<div class="createInstr">*only 1 lease can exist per wallet per time</div>
+					</div>
+          <li class="leaseItem leaseItemHM"><span class="shl_headmark" style="min-width: 75px;">Lessor</span><span class="shl_headmark">Holdings</span><span class="shl_headmark">Asking Eth</span><span class="shl_headmark">Duration</span><span class="shl_headmark">Taken</span><span class="shl_headmark">Expire</span><span class="shl_headmark shl_hm_dot"></span><span class="shl_headmark" style="min-width:40px;margin-right:5px;border:none;">Status</span></li>
+          <div id="sl_leases" class="sl_leases">
+          </div>
+        </div>
+      </div>
+      <!--=================================================================== -->
+      <div class="windows_shift" id="sharebid_win" style="display:none;">
+        <div id="win_sharebidding" class="sfrevealer">
+          <span class="contractpurpose_head"><h1>Share Bidding ~ coming soon.</h1></span>
+          <div class="contractpurpose">
+              <span class="contractpurpose_details">
+              <p>> Share Bidding is designed to create arbitrage opportunities & allow investors to cashout without affecting the liquidity pool. This protects holders who don't want to sell yet, and those permanently invested.</p>
+              <p>> By definition, its an alternative market place, for buying and selling tokens. With unclaimed or claimed rewards included in the price. Priced at a future value and date, but discounted for sell today.</p>
+              <p>> Share bidding transactions are taxed.</p>
+              <p>> Our 90% Sell tax on regular days acts as the doorman that checks your ticket/pass. Share leasing uses Discounted Cash Flows (DCF) to allow you to cash out total future value, today.</p>
+              <p>> This involves coming up with a good estimate of future token value, in order to strike a good deal today.</p>
+              <p>> Share bidding works best with wallets that have unclaimed rewards, otherwise the discount should reflect the "Ask Price" is for future value of tokens only. Rewards unclaimed will be reflected in the website lease lists soon.</p>
+              <ol class="saloonLists">
+                <li>As seller, you transfer your holdings and its rewards to another party, at an agreed price between parties. Price is calculated at a discount, i.e. future value of tokens & expected rewards/proceeds at today's price. The taker is willing to take your holdings entity as is, and to continue running it to get full value. So, the bigger the discount a taker gets, the more the profit in the future.</li>
+                </br>
+                <li>Seller is cashed out as soon as buyer transfers asked amount. The buyer now has to run the entity of holdings and claim all rewards and benefits until full value is reached.</li>
+                <ul>
+                  <span><b>Example</b> ~ 
+                  </br>> Selling 5 million GUN tokens worth $10,000
+                  </br>> Earning $200 weekly in rewards. 
+                  </br>> Listing value ~ $14,000. 
+                  </br>> Future Pricing Date ~ 7 months ahead. 
+                  </br>> Future Pricing Value ~ $15,600
+                  </span>
+                  </br>
+                  </br>
+                  <li>Deposit tokens into Share Bidding smart contract. First thing is first you have to calculate a future value of your tokens using a reasonable rate.</li>
+                  <li>As Seller, create a DCF contract with: Future Pricing Date, Future Value Estimate, Monthly Discount Rate , Fair Value Today based on discount rate</li>
+                  <li>Buyer comes and also calculates the figures to check for fair value. If favourable, the taker takes up the offer by depositing $104,000 USDC to contract.</li>
+                  <li>The USDC is straight away transferred to the DCF Seller, whilst our smart contract collects a fee. Rate is based on Fee Collector Rate in Main smart contract.</li>
+                  <li>Tokens are also then transferred to the Buyer straight away. Buyer now has the duty to manage and claim all rewards due until the full value is recovered.</li>
+                  <li>The difference with buying from Uniswap, as the buyer, is clearly the discounts. For the sellers, its the quick liquidation process, and at full value and tax free. Both clear advantages.</li>
+                </ul>
+          
+                
+              </ol>
+              </span>
+          </div>
+        </div><!-- screenreveal -->
+      </div>
+      <!--=================================================================== -->
+      <div class="windows_shift" id="charity_win" style="display:none;">
+        <div id="win_charity" class="sfrevealer">
+          <span class="contractpurpose_head"><h1>Charity - donate a stream of income ~ coming soon</h1></span>
+          <div class="contractpurpose">
+              <span class="contractpurpose_details">
+              <p>Donate a stream of income to a charity/fundraising of choice. Also create your own charity for your country or town or society. 
+                Register a Fee Collector contract for the charity or your fundraising beneficiary of choice. To start donating weekly all our community needs to do, is 
+                to stake tokens on the contract, and they start donating multiple reward claims automatically. You can unstake at any point in time and donations also 
+                automatically stop going into the charity. Its the simplest way to make charities collect all rewards directly into their wallet in 1 transaction. 
+                Remember this is community donations only, Reward Aggregating test pilot, not meant for people to buy the token in order to donate.
+              </p>
+              </span>
+              <span class="contractpurpose_details">
+                <p>Reward Aggregating is included in phase 2 of our building. Phase 2 focuses on real world application of our mechanisms (in charity & beneficiaries)
+                  and a new crowdfunding (& alpha) approach for the next bull run.</p>
+              </span>
+              <span class="contractpurpose_details">
+                <p><b>wtf is reward aggregating?</b></p>
+              </span>
+              <span class="contractpurpose_details">
+                <p>you already own passive income tokens which earn rewards weekly, high ($100) weekly earnings, or they may be small ($1) to you now, but what if you aggregate 
+                  all the crumbs, stack them onto one contract, tokens from all or any taxing project, from tens of thousands of wallets across the industry. They suddenly
+                  become significant. That is what we call dusting the system for passive income crumbs and cashing them in for a good cause. </br></br>You can keep your passive income tokens useful during the bear season, and 
+                  unstake them during the bull run when they become good earners again.
+                </p>
+              </span>
+          </div>              
+          <div class="rr_instructions">
+              
+          </div>
+        </div>
+      </div>
+  </section>
+  <div id="popupNotify" style="display:none;">
+    <div id="pNotifyX">x</div>
+      <div class="popupSuccess"></div>
+      <div class="popupBody">
+          <span class="popupText" id="popupTitle"></span>
+          <span class="popupText" id="popupAmounts"></span>
+          <span class="popupText" id="popupTxhash"></span>
+      </div>
+      <div id="pNt" class="popupNotify_timer"/></div>
+  </div>
+<!-- LOADING OVERLAY-->
+<div id="loadOverlay" style="background: radial-gradient(#683c2c, #363636); position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+  <div class="loading_badge_place">
+      <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="440" width="440" viewBox="-40 -40 440 440">
+        <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/><!-- cylinder out-->
+        <circle class="inner" fill="#963316cc" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+        <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/><!-- side marks -->
+            <g class="star">
+                <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/><!-- center of star -->
+                <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+                <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+                <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+                <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+                <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+            </g>	
+      </svg>
+  </div>
+</div>
+</body>
+</html>

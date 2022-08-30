@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> long for <meta charset="utf-8" />  -->
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>Bank</title>
+<link rel="stylesheet" type="text/css" href="css/_menu.css">
+<link rel="stylesheet" type="text/css" href="css/_bank_main.css">
+<link rel="stylesheet" type="text/css" href="css/_atm_actioncards.css">
+<link rel="stylesheet" type="text/css" href="css/_swapproxy.css">
+<link rel="stylesheet" type="text/css" href="css/_rbw.css">
+<link rel="stylesheet" type="text/css" href="css/_sharelease.css"><!-- share lease shares styles for hypecards -->
+<link rel="stylesheet" type="text/css" href="css/_atm_playRRcard.css"><!-- playing card was just too big -->
+<link rel="stylesheet" type="text/css" href="css/sweetalert/sweetalert.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script type="text/javascript" src="js/_walletstatus.js"></script>
+<script type="text/javascript" src="js/_inclHTMLincluder.js"></script>
+<script type="text/javascript" src="js/_hypecards.js"></script>
+<script type="text/javascript" src="js/_rbw.js"></script>
+<script type="text/javascript" src="js/_swapproxy.js"></script>
+<script type="text/javascript" src="js/_inclHTMLincluder.js"></script>
+
+<script type="text/javascript" src="js/_bank.js"></script>
+<script type="application/javascript" src="js/sweetalert/sweetalert.min.js"></script>
+
+<script>
+//Responsive Nav
+function updatemenu() {
+  if (document.getElementById('responsive-menu').checked == true) {
+    document.getElementById('menu').style.borderBottomRightRadius = '0';
+    document.getElementById('menu').style.borderBottomLeftRadius = '0';
+  }else{
+    document.getElementById('menu').style.borderRadius = '0px';
+  }
+}
+//TYPEWRITER
+document.addEventListener('DOMContentLoaded',function(event){
+    // array with texts to type in typewriter
+    var dataText = [ "Claim and track your rewards, and your RR status.", "Monitor Rebalancing Bias: measure sell and buy pressure.", "Monitor buy backs and born fires.", "Track project's 'net value lost' to date [maintain as close to a zero NVL system as possible]"];
+  
+    // type one text in the typwriter
+    // keeps calling itself until the text is finished
+    function typeWriter(text, i, fnCallback) {
+        // chekc if text isn't finished yet
+        if (i < (text.length)) {
+            // add next character to h1
+            document.querySelector(".intro_").innerHTML = text.substring(0, i+1) +'<span id="typewrite" aria-hidden="true"></span>';
+
+            // wait for a while and call this function again for next character
+            setTimeout(function() {
+                typeWriter(text, i + 1, fnCallback)
+            }, 100);
+        }
+        // text finished, call callback if there is a callback function
+        else if (typeof fnCallback == 'function') {
+            // call callback after timeout
+            setTimeout(fnCallback, 700);
+        }
+    }
+    // start a typewriter animation for a text in the dataText array
+    function StartTextAnimation(i) {
+        if (typeof dataText[i] == 'undefined'){
+            setTimeout(function() {
+                StartTextAnimation(0);
+            }, 20000);
+        }else{
+            // check if dataText[i] exists
+            if (i < dataText[i].length) {
+                // text exists! start typewriter animation
+                typeWriter(dataText[i], 0, function(){
+                // after callback (and whole text has been animated), start next text
+                StartTextAnimation(i + 1);
+                });
+            }
+        }
+    }
+    // start the text animation
+    StartTextAnimation(0);
+});
+
+
+</script>
+</head>
+
+<body>
+    <main id="main">
+        <nav id='menu'>
+            <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+            <ul>
+              <li class="go_home"><a href='index.html'><img src="img/cactus.png" alt="Logo" class="block-header-logo__image"></a></li>
+              <div class="chainstat">
+                  <div id="blocknumber" class="blockel">-------</div><div class="dot blockel"></div>
+              </div>
+              <div class="menu_float">
+                  <li><a href='saloon.html'>Saloon</a></li>
+                  <li><a href='bank.html'>Bank</a></li>
+              </div>
+            </ul>
+        </nav>
+        <div class="blockstatehold" id="blockstatehold">
+            <div class="showingshold">
+                <div class="wallets walletpur" style="display:none;">
+                    <div class="wallet_tab">
+                        <span id="wallet_balance">...</span><img src="img/walletimg.svg" /><span id="wallet_id">0x...</span>
+                    </div>
+                 </div>
+                 <div class="wallets waiting_init">-----</div>
+                 <div class="wallets wallet_connect">Connect Wallet</div>
+                 <div class="wallets network_switch">Switch Network</div>
+            </div>
+        </div>
+        <div id="mainwindow">
+            <section class="introbanner">
+            <svg>
+                    <mask id='m' fill='#fff'>
+                    <rect id='r' width='100%' height='100%'/>
+                    <circle id='c' r='40' fill='#000'/>
+                    <use xlink:href='#c' x='100%'/>
+                    <use xlink:href='#c' y='100%'/>
+                    <use xlink:href='#c' x='100%' y='100%'/>
+                    </mask>
+                    <use xlink:href='#r' fill='#000' mask='url(#m)'/>
+                    </svg>
+                <div class="windows_shift">
+                    <span class="contractpurpose"><h1>Welcome to the bank</h1></span>
+                    <div class="intro_cont"><div class="intro_"></div></div>
+                </div>
+            </section>
+         </div><!-- mainwindow -->
+         </br>
+         <section class="claimsSect">
+            <div class="myClaims">
+                <h4>Card Center</h4>
+                <!-- include hypecards module -->
+                <div hypecards-include-html="resources/_incl_hypecards.html"></div>
+            </div>
+
+            
+         </section>
+        
+         <section class="banksec">
+            <!-- include rbw module -->
+			<div id="hypecard_poll" rbw-include-html="resources/_incl_rbw.html"></div>
+            <div id="hypecard_withdrawpoll">
+                <div class="inforview">
+                    <div class="RBWlevels">
+                        <div class="rbwHold">
+                            <div class="mpcard_details" id="rbwls_rbw">
+                                <div id="dot_withdraw" class="dot blockel"></div><span class="rbwTitle"><b>Treasury Wallet:</b></span><span id="treWallet" class="rbwWallet"> 0x00...<img src="img/external.svg" /></span>
+                            </div>
+                            <div class="requestInfor">
+                                <span class="requestTitle">withdrawal request amount:</span>
+                                <span id="requestAmount" class="requestAmount">---</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="treLevelsHold">
+                        <div class="treasurybalance">
+                            <div class="trebT">available balance</div>
+                            <div id="trebB" class="trebB">0.000eth</div>
+                        </div>
+                        <div class="treFigures">
+                            <span id="trenetDeposits" class="rbbLevel wreqsmall">{net deposits 0.00eth}</span>                            
+                            <span id="trenetWithdraw" class="rbbLevel wreqsmall">{net withdrawn 0.00eth}</span>
+                        </div>
+                        <div class="mbcard_detail rb_detail">
+                            <div id="stampButtons" class="stampButtons">
+                                <div id="stampApprove">
+                                    <span class="stampWhat">Approve Stamp</span>
+                                    <span id="approveCount" class="stampCount">0</span>
+                                </div>
+                                <div id="stampDecline">
+                                    <span class="stampWhat">Decline Stamp</span>
+                                    <span id="declineCount" class="stampCount">0</span>
+                                </div>
+                            </div>
+                            <div id="withdrawStandby" class="standByHold">
+                                <span id="standByTxt" class="standBy">No Active Withdrawal Request&emsp;<img title="withdrawal requests are done by the Rebalancing Wallet RBW automatically, when the previous buy back/bonfire event does not take RBB below 1.5, hence more eth required for more buybacks." src="img/info.png" /></span>
+                            </div>
+                            <div id="withdrawConclude" class="standByHold">
+                                <div id="concludeVote" class="standBy">Conclude Request</div>
+                                <span id="voteEndVerd" class="wreqsmall">Verdict:</span>
+                            </div>
+                        </div>
+                        <div class="treFigures requestverdict">
+                            <span id="rbbBBS" class="rbbLevel wreqsmall"><span id="requestTimes">{poll times}</span> <img src="img/info.png"  title="farmer wallet cannot withdraw for the first 30 days in order to create a buffer between topup withdrawals by the RBW and farmer withdrawals"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mybank">
+                <div class="mybank_casing">
+                    <h4>Towns' Economy</h4>
+                    <!-- <div class="mbcard_detail"><span class="tspan" id="mbcard_liq"> ---- </span><span id="mbcard_liqdet"> ---- </span></div> -->
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class="">Market Cap</span><span id="usdprice"></span></div>
+                        <div class="mbcard_detail"><span class="tspan" id="mbcard_cap"> ---- </span><span id="mbcard_capdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Fee Tokens</span>&emsp;<img title="Sum of fee tokens. All taxes are collected in tokens and liquidated through buys on our swap page at a discount e.g 5% discount" src="img/info.png" /></div>
+                        <div class="mbcard_detail"><span class="tspan" id="mbcard_feet"> ---- </span><span id="mbcard_feetdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Tokens Burnt</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_bf"> ---- </span><span id="mbcard_bfdet"> ---- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Rewards </span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_rew"> --- </span><span id="mbcard_rewdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Rebalancing Wallet</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_reb"> --- </span><span id="mbcard_rebdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Treasury </span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_tre"> --- </span><span id="mbcard_tredet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Farmer Wallet</span>&emsp;<img title="farmer cant withdraw for the first 30 days to build a buffer, that way we know quickly how much the treasury can afford to farm without the rebalancing wallet needing it" src="img/info.png" /></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_farm"> 0x00000 </span><span id="mbcard_farmdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Russian Roulette Winners</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_ruro"> --- </span><span id="mbcard_rurodet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Sixers Maturing</span>&emsp;<img title="those who stake for six month automatically qualify for Russian Roulette, qualifiers are limited each month, added based on Treasury buffer amount. If treasury wallet has excess or proceeds returned from farming" src="img/info.png" /></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_sixer"> --- </span><span id="mbcard_sixerdet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Share Leases</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_leased"> --- </span><span id="mbcard_leaseddet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Staked</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_sta"> --- </span><span id="mbcard_stadet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Beneficiaries Volume</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_ben"> --- </span><span id="mbcard_bendet"> --- </span></div>
+                    </div>
+                    <div class="mybankcard">
+                        <div class="mbcard_title"><span class"">Donations</span></div>
+                            <div class="mbcard_detail"><span class="tspan" id="mbcard_dona"> --- </span><span id="mbcard_donadet"> --- </span></div>
+                    </div>
+                    
+                    <!--- add cards to track: 
+                    - russian roulette players vs winners for the month, 
+                    - total staked: tokens, eth worth, stakers count
+                    - total leased: tokens, eth worth, leases count, taken leases todate in eth
+                    - reflections paid to date, claimers
+                    - total burnt: tokens, eth worth at time
+                    - taxes: current buy and sell tax
+                    - bandits: count of quitters who sell at 90% regardless, eth value sold to date
+                    --->
+
+                    
+                </div>
+            </div>
+         </section>
+
+         <!-- include swap module -->
+		<div swaps-include-html="resources/_incl_swaps.html"></div>
+
+    </main>
+
+<div id="popupNotify" style="display:none;">
+	<div id="pNotifyX">x</div>
+    <div class="popupSuccess"></div>
+    <div class="popupBody">
+        <span class="popupText" id="popupTitle"></span>
+        <span class="popupText" id="popupAmounts"></span>
+        <span class="popupText" id="popupTxhash"></span>
+    </div>
+    <div id="pNt" class="popupNotify_timer"/></div>
+</div>
+<!-- LOADING OVERLAY-->
+<div id="loadOverlay" style="background: radial-gradient(#683c2c, #363636); position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+    <div class="loading_badge_place">
+        <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="440" width="440" viewBox="-40 -40 440 440">
+          <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/><!-- cylinder out-->
+          <circle class="inner" fill="#963316cc" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+          <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/><!-- side marks -->
+              <g class="star">
+                  <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/><!-- center of star -->
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+              </g>	
+        </svg>
+    </div>
+</div>
+
+<!-- DRY /MODULAR DEVELOPMENT -->
+<script>
+	includeHypecards();
+	includeSwaps();
+    includeRBW();
+</script> 
+
+</body>
+</html>

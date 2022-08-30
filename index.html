@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Russian Roulette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,400&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" type="text/css" href="css/_menu.css">
+<link rel="stylesheet" type="text/css" href="css/_home.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"><!-- font5 css stickers -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script type="text/javascript" src="js/easeljs.min.js"></script><!-- horse canvas-->
+<script>
+    //Responsive Nav
+    function updatemenu() {
+        if (document.getElementById('responsive-menu').checked == true) {
+            document.getElementById('menu').style.borderBottomRightRadius = '0';
+            document.getElementById('menu').style.borderBottomLeftRadius = '0';
+        }else{
+            document.getElementById('menu').style.borderRadius = '0px';
+        }
+    }
+</script>
+</head>
+
+<body>
+<canvas id="mycanvas" width="612" height="280"></canvas>
+<script>
+    //Running horse canvas - has to be here not in head
+    var stage = new createjs.Stage("mycanvas")
+        createjs.Ticker.addEventListener("tick", stageBreakHandler);
+        var img =  new Image()
+        img.src = "img/horseabrown.png"
+        img.onload = function(){
+            var ss = new createjs.SpriteSheet({
+                "images": ["img/horseabrown.png"], 
+                "frames": [
+                    [519,1352,468,225,0,-39.5,-6.05],[525,694,405,225,0,-39.5,-6.05],[402,1577,398,241,0,-37.5,-9.05],[0,1565,402,239,0,-33.5,-8.05],
+                    [521,920,430,233,0,-23.5,-14.05],[520,0,465,228,0,-7.5,-22.05],[515,238,479,228,0,-8.5,-24.05],[508,470,500,224,0,-2.5,-26.05],
+                    [0,470,508,231,0,-5.5,-20.05],[0,238,515,232,0,-9.5,-17.05],[0,0,520,238,0,-12.5,-11.05],[0,920,521,219,0,-18.5,-11.05],
+                    [0,701,525,219,0,-18.5,-11.05],[0,1352,519,213,0,-28.5,-10.05],[0,1139,520,213,0,-28.5,-10.05]
+                ],
+                "animations" : {
+                    "run": [0,14,"run"]
+                }
+            })
+            var sp = new createjs.Sprite(ss,"run")
+            stage.addChild(sp)
+            stage.update();
+        }
+        function stageBreakHandler(event){
+            stage.update();
+        }
+</script>
+
+<nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+      <li class="go_home"><a href='index.html'><img src="img/cactus.png" alt="Logo" class="block-header-logo__image"></a></li>
+      <div class="menu_float">
+          <li><a href='saloon.html'>Saloon</a></li>
+          <li><a href='bank.html'>Bank</a></li>
+      </div>
+    </ul>
+</nav>
+<section id="holf">
+    <div class="goalcont">
+		<svg class='intro_svg placards'>
+			<mask id='m1' fill='#fff'>
+				<rect id='r1' width='100%' height='100%'/>
+				<circle id='c1' r='40' fill='#000'/>
+				<use xlink:href='#c1' x='100%'/>
+				<use xlink:href='#c1' y='100%'/>
+				<use xlink:href='#c1' x='100%' y='100%'/>
+			</mask>
+			<use xlink:href='#r1' fill='#000' mask='url(#m1)'/>
+		</svg>
+        <ul class="placardText">
+            <h4>Russian Roulette DAO</h4>
+            <div class="badge_place">
+                <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="440" width="440" viewBox="-40 -40 440 440">
+                  <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/><!-- cylinder out-->
+                  <circle class="inner" fill="#963316cc" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+                  <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/><!-- side marks -->
+                      <g class="star">
+                          <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/><!-- center of star -->
+                          <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+                          <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+                          <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+                          <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+                          <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+                      </g>	
+                </svg>
+            </div>
+        </ul>
+        
+    </div>
+    <div id="h4hold">        
+        <span class="main_points"><h1 class="glitch"><!-- the most radical shift in tokenomics in a while..</br>-->a bear market community hedge concept..</br>for the believers, web3 frontier..</h1></span></br>
+    </div>
+    <div class="p1_links_cont">
+    	<button class="p1_links">ProxyDex</button><button class="p1_links">Uniswap</button><button class="p1_links">Dextools</button> </br>
+        <a class="p1_download_links" href="docs/RRDAO_conception.pdf" target="_blank">Conception</a>
+        <a class="p1_download_links" href="docs/RRDAO_technical_litepaper.pdf" target="_blank">Litepaper</a>
+        <a class="p1_download_links" href="docs/RRDAO_onepage.pdf" target="_blank">TL;DR</a>
+        <a class="p1_download_links" href="docs/RRDAO_features_list.pdf" target="_blank">Features</a>
+    </div>
+    <div id="code">
+        <a class="codeGithub" title="GitHub frontend"></a>
+        <a class="codeGithub" title="GitHub smart contracts"></a>
+        <a class="codeEtherscan" title="Etherscan main contract"></a>
+        <a class="codeEtherscan" title="Etherscan rebalancing wallet"></a>
+        <a class="codeEtherscan" title="Etherscan treasury"></a>
+    </div>
+    <!-- Quantity should be the same in Sass-->
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    
+    <div class="desert">
+      <div class="tumbleweed"></div>
+      <div class="tumbleweed"></div>
+      <div class="tumbleweed"></div>
+    </div>
+
+</section>
+
+<section id="holf_p2">
+    <div class="background-container">
+
+        <div class="wrapper">
+            <input checked type=radio name="slider" id="slide1" />
+            <input type=radio name="slider" id="slide2" />
+            <input type=radio name="slider" id="slide3" />
+            <input type=radio name="slider" id="slide4" />
+            <input type=radio name="slider" id="slide5" />
+          
+            <div class="slider-wrapper">
+                <h1 class="carousel_h1">who are we and what we do:</h1>
+                <div class=inner>
+                    <article id="carousel_1">
+                        <span class="carousel_info">Russian Roulette is a community hedge concept, a ponzi, that also thrives during the bull season. Here nothing is static ~ everything is responsive to market cycles and the subsequent buy or sell pressures. Its comprised of 3 contracts: Main, Rebalancing Wallet, and Treasury. The rebalancing wallet is a community controlled contract responsible to for responsively allocating fees where needed. To maximise on value containment, the primary goal of the RBW contract is to attempt to use buybacks to replace all eth lost from the liquidity pool. It automatically tracks the value of tokens scheduled for a sell and keeps a reserve for buybacks, sending only the excess to treasury. During the bear season our sell taxes are a radical 90% to discourage selling. Unless you schedule a sell then its 10% sell tax. But during the bull season we lower taxes based on fees collected to RBW. Taxes are not lowered blindly because the Rebalancing Bias will be blown out of range as holders take profit during the bull season, pushing the NVL higher. Bringing it down after so the RBW can function normally within ranges during the bear season would be hard since fees accured at this time will be insignificant compared to the unchecked NVL. So we remain responsive to the trading volume and lower to what we can cover, such that the rbb is always within a healthy and functional range. The scheduling of sells is left to chance through Russian Roulette. The value containment responsive nature of this project is what makes it a hedge, and its designed to be undumpable, and present the real first Up Only scenario.</span>
+                    </article>
+            
+                    <article id="carousel_2">
+                        <span class="carousel_info">This is a ponzi. We exist to explore sustainability in the crypto space, specifically for no-use-case projects. With the hope to see similar mechanisms developed or adopted across the industry to create a safe sustainable enviroment for investors. In this experiment we want to explore the effects of extreme taxing and buybacks, coupled with limited batched sells, on economic sustainability. In taxed txs projects, the trading volume and inherently taxes collected are the only income stream, and its worth preserving that life line. No project can simultaneously withstand unlimited value drain via unchecked sells whilst guaranteeing profit for all investors regardless of entry price, except possibly during the bull season when theres little to no damage to the project. Rebasing tokens tried guaranteeing value with an inflationary approach and failed. Staking mechanisms which were once viewed as the holy grail of managing sell pressure came and failed to do so. Now we have taxes. The goal is to contain value within the project, long enough for the project to achieve its goals or become TBTF. The goal is not just passive income but to also guarantee token value retention for all holders.</br></br></br></br></br></span>
+                    </article>
+            
+                    <article id="carousel_3">
+                        <span class="carousel_info">All taxes are collected in tokens on the contract. They are not liquidated through the liquidity pool as this defeats the whole point, they are liquidated through proxy-buys using our contract. We offer a 5-10% discount on tokens bought through the proxy dex as you will be helping liquidate fee tokens. The buy tax is a constant 15% but can be lower if the fee liquidation discount is factored in, thats if there are fee tokens available to meet your buy request. Once converted to ETH, all the income is automatically send to the Rebalancing Wallet, which is a community controlled contract, resposible for making buybacks or treasury allocations(another wallet), responsively to the buy and sell pressures. There are no blind allocations, the health of the project is guaged on Net Value Lost from the Liquidity pool, compared to buybacks, to give a RBB (rebelancing bias). The rebalancing bias is used by the contract to automatically trigger a buyback if the RBB is out of the healthy range, below 1 or above 1.5. Any community member can trigger this, when in a healthy range the contract then switches to allocations based on poll outcome. Each poll is time limited, and minimum voter checked, and on conclusion automatically allocates funds to where the community voted for, an automatic buy back or sending to treasury contract. There is no owner intervention whatsover on the Rebalancing Wallet.</br></br></br></span>
+                    </article>
+            
+                    <article id="carousel_4">
+                        <span class="carousel_info">Though theres a 90% tax in place (variable remember) its not a honeypot, holders can <b>actually sell</b> whenever they want into our Uniswap Liquidity Pool, just through our contract as a proxy. Most people are used to losing 90% or more of their holdings anyway in shit projects, so if investors want a quick way out at the expense of long term holders, we expect them to take the 90% loss. Instead of selling out of schedule we encourage the use of Share Leasing where you can rent out your tokens to another party and get a net equivalent or estimate today of all rewards expected during the lease period. In addition, Share bidding will be introduced which facilitates transfer of ownership outside of the LP using a bid and offer approach in fixed lots. The proxy dex will compete by offering discounts on fee tokens to lure buyers back to the Uniswap liquidity pool. Normally when people sell frantically it harms the holders, here it harms only the sellers, and leave the holders in a better place. In summary, with these new tokenomics, we are aiming to: guarantee value where Rebasing mechanisms failed to, and effectively manage sell pressure where Staking mechanisms failed to.</br></br></br></br></br></span>
+                    </article>
+                </div>
+              <!-- .inner -->
+            </div>
+            <!-- .slider-wrapper -->
+            <div class="slider-prev-next-control">
+              <label for=slide1></label>
+              <label for=slide2></label>
+              <label for=slide3></label>
+              <label for=slide4></label>
+            </div>
+            <!-- .slider-prev-next-control -->
+          
+            <div class="slider-dot-control">
+              <label for=slide1></label>
+              <label for=slide2></label>
+              <label for=slide3></label>
+              <label for=slide4></label>
+            </div>
+            <!-- .slider-dot-control -->
+        </div>
+        <div class="directionsplease"><img src="img/directions.png" alt=""></div>
+        <!-- <img class="moonshot" src="" alt="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png"> -->
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+        
+        <div class="sectionsides"><!-- side left -->
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/w12GNkwz_b.jpg" alt="image" title="defending your honor" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Sell Tax Variable</div>
+                    <div class="fdetail fd_foot">In reality, projects need to retain value long enough to hit milestones. For none use case projects which rely on taxes and farming, this means supressing sell pressure, only allowing sustainable volumes of ETH to leave the LP. And so in intentional nature, a 90% Sell Tax is applied to discourage off-budget sells, with 10% Sell Tax - every Saturday (Russian Roulette day). ** <b>NOT  a honeypot, you can actually sell through a proxy.</b> Sell tax is lowered during bull seasons.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard">
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/pG2Fmi1V_t.jpg" alt="image" title="war path" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Scheduled sells allow budgets</div>
+                    <div class="fdetail fd_foot">The high sell tax allows us to curb random sells, and schedule low 10% sells in advance (with scheduling left to chance). This allows for realistic guaging of the ecosystems' financial health, budgets & building a reserve in the rebalancing wallet, for buybacks, with excess going to the treasury contract/wallet, awaiting withdrawals if more funds are needed for buybacks.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/01TOB87P_t.jpg" alt="image" title="bandits ~ fire riders" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Main Contract is Deflationary</div>
+                    <div class="fdetail fd_foot">The community hosts a 24/7 Bonfire, triggered automatically on Rebalancing Wallet poll outcomes or automatically based on net outflows from the LP. All taxes collected and cashed into ETH, is send to the RBW(Rebalancing Wallet) to be deployed either towards Buy-Back & Burns or Treasury investing. Anyone can trigger this, or hold a Bornfire Event with your own eth.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/ewfASzPQ_b.jpg" alt="image" title="morricone guitarrón theme song" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Sell Relief Mechanisms</div>
+                    <div class="fdetail fd_foot">Complementing a high Sell Tax are Share Leasing and Share Bidding (Discounted Cash Flows). The former is live, holders can rent out tokens and get rewards in advance on lease start. The later, DCF, will facilitate token ownership transfer without selling in the LP. Holders simply price future value of their tokens & quote what they will accept today at a discount.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/liJNlEl2_b.jpg" alt="image" title="shot for shot" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Saloon contracts to boost utility</div>
+                    <div class="fdetail fd_foot">In addition to curbing sells, since we rely on taxes for income we boost volume using saloon contracts. These are variations of the main contract hedge concept, exploring even daily or hourly unlocks, or monthly. For late comers, saloon contracts are a tool to catch up.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+        </div><!-- close FUCK YOU side section -->
+        
+        <div class="sectionsides"><!-- side right-->
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/9jPunHBu_t.jpg" alt="image" title="the taxman" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Fee Liquidation, incentives & deployment mechanisms</div>
+                    <div class="fdetail fd_foot">Collected Fee Tokens are liquidated through Proxy Buys instead of selling them in the Liquidity Pool. Proxy buys offer a 3-5% discount for helping liquidate tokens, unlike buying from Uniswap. The ETH accrued from fee tokens liquidation is send to the Rebalancing Wallet to be under the full control of the community. The owner has to control whatsoever over buybacks or funds send to treasury for investing.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/0zdz6uZ0_b.jpg" alt="image" title="ogre kachina" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Designed to be built on</div>
+                    <div class="fdetail fd_foot">Service Fee Collectors and assigning reward Beneficiaries, allows us to have Charity Dapps, Utility tools and Games to be built on top of our smart contract. these addresses are registered Dapps by third parties to collect fees and offer additional services built on top of our ecosystem. Charity services, utility tools and games can be built on top and be excluded from some common limits.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/4yESYV0W_t.jpg" alt="image" title="silent ambush" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Safeguards</div>
+                    <div class="fdetail fd_foot">Owner has no control whatsoever over fees collected, the RBW and stopping trading. Bad actors are blacklisted and the only way out would be to send tokens to Treasury. On migration, all ETH on main contract can only be send to RBW and the community decides the fate of the project. The RBW can only be set once by owner. Wallet-to-wallet transfers disabled to prevent RR cheating.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/f5osyV53_t.jpg" alt="image" title="dead mans hand" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">GameFi and Gambling</div>
+                    <div class="fdetail fd_foot">Working our way backwards, from what we believe gameFI is supposed to mean, all our contracts have a gameFi nature used to effect a result otherwise not possible. Other games like Gunsling are meant to boost holdings.</div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+            </br>
+            <div class="featurecard"><!-- OPEN FC -->
+                <div class="feature_aside">
+                    <div class="fthumb"><img src="img/yy9CPY5s_t.jpg" alt="image" title="Nermernuh, spirit of a nation" /></div>
+                </div>
+                <div class="feature_section">
+                    <div class="fdetail fd_head">Further your cause.</div>
+                    <div class="fdetail fd_foot">Everybody has a cause they believe in, ours is charity. We harness the skills of the community to collaborate on building platforms for all causes. From charity to all social injustices. Part 2 of our story is building a unique new approach to charity, reward aggregation in the industry and a new crowd funding approach for projects for the next bull cycle. </div>
+                </div>
+            </div><!-- CLOSE FEATURE CARD -->
+        </div><!-- close FUCK YOU side section -->
+        <div class="quotediv">,,</div>
+    </div><!-- CLOSE BACKGROUND CONTAINER -->
+    <!-- Quantity should be the same in Sass-->
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+</section>
+
+<section id="holf_p3">
+	<div class="holf_3_cont">
+    <div id="holf_p3_cont">
+        <div class="holf_3_intro">
+            <h4>Quick round up</h4>
+            <span>
+                Buy Backs and Burns (Bonfires) are not up to the admin, they are fully under the control of the community and its automated to settle once a poll ends. All fess collected
+                end up in the decision making vote of the investor. The goal set for the community is to simply buy back all the ETH lost from the LP that month. If there is excess cash then
+                it the community can vote to send it to the Treasury for passive income investing.
+                </br></br>
+                We also dont liquidate fee tokens in the LP like most projects do. We liquidate them through Discounted Proxy Buys, on our Dex, you cant get these discounts on Uniswap.
+                Other supporting mechanisms to protect the LP are Share Leasing and Share Bidding (Discounted Cash Flows). These divert selling pressure from the LP. We understand the need to become liquid
+                but we want it at the expense of the LP. You can get liquidity from your tokens through leasing them out or transferring "your holdings enterprise" to a new owner at a discount.
+                </br></br>
+                Our aim is not just to give reflections, but to also give holders a fair opportunity to offload tokens at high ROI. In predictable and controlled batches.
+                </br></br>
+                The main goal of this project is to protect and retain value: both token price and treasury capital. Using high taxes to funnel sell pressure and introduce a 
+                factor of predictability, using share bidding to avoid value drain from the liquidity pool, using Russian Roulette to distribute opportunity equally, a 
+                rebalancing wallet to channel funds where they are needed the most instead of blind allocations, and saloon contracts to boost token utility.
+            </span>
+            <h4>Tax quitters, reward holders</h4>
+            <span>
+                Normally when people sell frantically it harms those who hold on as they drain all the ETH, in this case holders are unscathed. Even if 10 people stay behind, they will profit 
+                from all the LP ETH and Rewards left by quiters. You hold - you win, they sell- you win, the only way to lose is to sell outside your turn. This should give investors sleep at night.
+            </span>
+        </div>
+        <div class="issuescont">
+            <h2 class="goalsh2">Issues we are tackling</h2>
+            <ol class="ol_issues">
+                <li>Unsustainable value leaking tokenomics models. Most projects pump and fizzle out no matter how good the narrative is. The goal is to sleep at night if you're in a solid project. </li>
+                <li>Channelling of project funds or fees collected is not thoughtful or responsive in almost all taxing projects.</li>
+                <li>Buy and sell pressures are unregulated, especially the later, leading to incidents where panic selling kills the project without cause.</li>
+                <li>Inability to predict future market forces, in turn harming financial planning and decision making today.</li>
+                <li>Quick flippers tolerated at the expense of long term holders.</li>
+                <li>Late comers are not accomodated and face negligible rewards.</li>
+                <li>Lack of token utility, our project is weaved from the base up to make the token valuable.</li>
+                <li>GameFi shouldnt be the main product, but a utility tool to facilitate a core fundamental function.</li>
+                <li>DAOs have limited powers in managing the health of the project. Relying solely on the owner, it can be disastrous: citing incidents where rebasing projects failed to buy back with their treasury as intended.</li>
+                <li>Purposeless crypto. Crypto is establishing roots in every corner of society to be the change enabler, lets push it.</li>
+                <li>Limited financial mechanisms are currently adopted across the industry.</li>
+            </ol>
+        </div>
+        <div class="issuescont">
+            <h2 class="goalsh2">Solutions</h2>
+            <ol class="ol_solutions">
+            <div>Russian Roulette Dao is a project comprising of multiple contracts. Heres a full list of features in brief.</div>
+            <div class="p1_links_cont">
+                <a class="p1_download_links" href="litepaper.pdf" target="_blank">Features List</a>
+            </div>
+            <span>Our Contracts</span>
+                <!-- MAIN LI ONE -->
+                <li>
+                    <div>Main Contract</div>
+                    <ul><!-- NEST ONE -->
+                        <li>Contract is permanent, and relies on RBW and Treasury wallet to function properly.</li>
+                        <li>15% buy Tax (5% reflections in ETH, 10% goes to Rebalancing wallet).</li>
+                        <li>Sell tax is variable, 90% during bear season, and during the bull season its determined by fees collected.</li>
+                        <li>90% of the total supply is deployed in the liquidity pool on a fair launch, with 10% going to the team in the owner wallet.</li>
+                        <li>Trading starts automatically at a certain block number and cannot be stopped.</li>
+                        <li>Wallet to wallet transfer are disabled to avoid cheating in scheduling a sell through Russian Roulette.</li>
+                        <li>Aim is to keep Net Value Lost (NVL) in the project as close to zero as possible.</li>
+                        <li>All tokens bought back are burnt thought the bonfire function. Anyone can burn directly if they are feeling generous.</li>
+                        <li>Rewards can also be donated by anyone.</li>
+                        <li>Fees collected/accrued are deployed as voted by community or according to the projects health limits.</li>
+                        <li>Share bidding allows you to transfer your share of the treasury (tokens) to a buyer at a premium, using our contract as escrow, without facing the sell tax. Buyer pays 10% fee that goes to the Rebalancing wallet.</li>
+                        <li>Investors can buy and stake tokens directly on the contract. Staking six months qualifies the wallet to schedule a 10% sell automatically upon maturity, at least 50% of your wallet tokens need to be staked to qualify.</li>
+                        <li>Maximum holdings is 0.5% at trading start, and increases to 1%  after 10x, and 2% after 100x from initial liquidity.</li>
+                        <li>Owner wallet only controls: setting trading fees within range, setting fee tokens liquidation discount, setting fee collector contracts (services built on top of the main contract), scheduling odds within range, setting max holdings, setting sixer stakers limit monthly, setting polling frequency withing range, setting Russian Roulette scheduling odds withing a predefined range.</li>
+                        <li>Marketing funds are part of Treasury.</li>
+                        <li>A sigle wallet can have multiple donors, setting it as beneficiary on passive income rewards.</li>
+                    </ul>
+                    </br>
+                    <div>Every Saturday Russian Roulette is activated:</div>
+                    </br>
+                    <ul><!-- NEST TWO -->
+                        <li>You have 1 in six chances of scheduling a low tax sell, winning Russian Roulette (you can play in advance, and if you win you can use it only once).</li>
+                        <li>If you win, you can go on to sell your GUN tokens at 10% sell tax any coming Saturday.</li>
+                        <li>If you lose, the 90% sell tax still applies for the month.</li>
+                        <li>The rebalancing wallet remains active in buy backs, but suspends polls on Saturday to avoid channeling funds to Treasury.</li>
+                        <li>The Rebalancing Wallet can withdraw funds it previously send to the treasury wallet, if they are needed for more buybacks, this is automatic each Sunday after initial buybacks and the RBB is stil out of range.</li>
+                        <li>The community simply votes to approve or reject the automatic withdrawal request. The farmer wallet can only withdraw once a month. First withdrawal is only possible after a 30 day buffer from trading start.</li>
+                    </ul>
+                </li>
+                <!-- MAIN LI TWO -->
+                <li> 
+                    <div>Saloon Contracts - split into: Low Level & High Level</div>
+                    <ul><!-- NEST THREE -->
+                        <li>Community votes on which contract to run the upcoming month.</li>
+                    
+                        <li>Contracts are listed in the saloon in advance, visit to see details.</li>
+                    
+                        <li>Each contract has a different gamification and reward aspect from the last.</li>
+                    
+                        <li>Low Level Saloon Contracts (LLSC) last a month only. They conclude after 30 days.</li>
+
+                        <li>LLSC - If you missed the main contract stealth launch, you get the opportunity to play catch up through saloon contracts, monthly</li>
+                    
+                        <li>LLSC - There is a listing schedule for each contract, you know exactly when its coming and ending.</li>
+                    
+                        <li>LLSC - Each contract aims for the same stealth launch, and a removal of taxes on the last day, this potentially gives late comers the same moonshot ROI as that achieved by the early main contract investors. After enough monthly contracts, you will have enough cap gains to match the main contract holders cap gains. At which point you can go into the main contract as a whale too.</li>
+
+                        <li>High Level Saloon Contracts will be almost identical to the main contract, they run in perpetuity, but with different sell suppressing measures and scheduling measures. From hoursl, daily, to monthly.</li>
+                    
+                        <li>Token symbol GUNx (where x is a sequential digit).</li>
+                    
+                        <li>You have to be a holder of GUN tokens to qualify to buy these tokens.</li>
+                                        
+                        <li>90% sell tax (use varies per contract)</li>
+                    
+                        <li>Buy backs volumes vary per contract, a balance is needed between maintaining Treasury and Liquidity Pool</li>
+                    
+                        <li>Treasury funds are deployed depending on contract, as voted by community.</li>
+                    
+                        <li>Reflections are in ETH.</li>
+                    </ul>
+                    </br>
+                    <div>For low level monthly contracts, on the last day of each month, conclusion mechanisms are activated:</div>
+                    <ul>
+                        <div>Conclusion mechanisms last 12 hours only.</div>
+                        <div>Reward possibilities are as follows - </div>
+                    </ul>
+                </li>
+                    
+                <!-- MAIN LI THREE -->
+                <li> 
+                    <div>Rebalancing Wallet</div>
+                    </br>
+                    <div>This is the second key contract, relied on by the Main Contract and Treasury wallet.</div>
+                    <ul>
+                        <li>All eth from liquidated fee tokens is send directly to this wallet. Only reflections remain on the main contract.</li>
+                    
+                        <li>The owner can only set polling frequency, within range of minimum 1 and maximum 6. To mean a pool every hour or every 6 hours.</li>
+                    
+                        <li>The rebalancing events, to treasury or to buybacks, is triggered by either polls or RBB levels as safeguards.</li>
+
+                        <li>Any community member holding 1000 tokens can trigger a rabalancing event automatically, or create a poll.</li>
+
+                        <li>The RBW checks the RBB level first by goung through the auto-rebalancing-check function to determine if its in a polling range or to rebalance immediately.</li>
+
+                        <li> RBB level, known as the rebalancing bias, is calculated as: Net eth outflows from LP / net eth Buybacks perfomed.</li>
+
+                        <li>Ideal level is one, which is minimum, all sells have been covered. This seems ambitious until you consider the high sell tax.</li>
+
+                        <li>Max RBB level is 1.5, median is 1.25. If above 1.5 it automatically buys back on every check. If between 1 & 1.5 its in a polling range, and wont allow autmatic rebalancing events. Only polls.</li>
+
+                        <li>Each poll requires at least 20 voters, no maximum.</li>
+
+                        <li>Each poll is time limited based on the poll frequency set by owner. With a 10 mins cool down from the last poll in order to create a new one.</li>
+
+                        <li>The RBW before allocating funds to treasury, checks the scheduled sellers list (RR winners list for the month) and estimates the net eth worth, then keeps a reserve for buy backs and only send excess to treasury if available.</li>
+
+                        <li>See features list for full details.</li>
+                    </ul>
+                </li>
+                
+                <!-- MAIN LI FOUR -->
+                <li> 
+                    <div>Treasury wallet</div>
+                    </br>
+                    <div>This is the third key contract, relied on by the Main Contract and Rebalancing Wallet</div>
+                    </br>
+                    <div>Key aspects:</div>
+                    <ul>
+                        <li>It receives excess funds from the Rebalancing Wallet, except on Russian Roulette day.</li>
+                    
+                        <li>Its not ownable, by controlled by main contract owner.</li>
+                    
+                        <li>A farmer wallet can be assigned to withdraw the funds and start farming for the community. This is only possible after 30 days from trading start, and happens once a month.</li>
+
+                        <li>The rebalancing wallet can also make a withdrawal request if more funds are needed.</li>
+
+                        <li>The community then votes to approve or reject the request on Sunday.</li>
+
+                        <li>See features list for full details.</li>
+                    </ul>
+                </li>
+                
+                
+                <!-- MAIN LI FIVE -->
+                <li> 
+                    <div>The community chooses which rules to put in the Saloon Contracts. 🗳</div>
+                    </br>
+                    <div>Key aspects:</div>
+                    <ul>
+                        <li>Each contract is drafted based on community votes. A final vote on the listing schedule of contracts is made before its deployed.</li>
+                    
+                        <li>The community chooses how the taxes are utilised. For instance community can vote to have a Charity contract where all treasury funds are used to fund one specific cause listed in the Cause Section.</li>
+                    </ul>
+                </li>
+
+                <!-- GAMIFICATION -->
+                <li> 
+                    <div>Gamification</div>
+                    <div>The project is a bit playful, but with utility.</div>
+                    </br>
+                    <div>Games available:</div>
+                    <ul>
+                        <li>Play russian roulette with the tax man. You have one in six chance to win, if he dies, you win a tax free sell. </li>
+                    
+                        <li>Mexican standoff. Gun sling with anyone who wants out/to sell their main contract tokens, but also wants to boost his/her stash without suffering the hefty tax. Both participants stake equal bags, gun sling, the winner takes all. Winner then goes to either play RR (a) or just sell at a net gain of 20% without a tax break. </li>
+                    
+                        <li>Lottery. Play the lottery draw, its a zero sum game, pay a fee to enter, draw is on last day of the month.</li>
+                    </ul>
+                    </br>
+                    <div>We aim to partner with game developers to:</div>
+                    <ul>
+                        <li>Develop more wild west games: Black Jack, Poker etc.</li>
+                        <li>Develop a saloon metaverse, with in game NFTs.</li>
+                    </ul>
+                </li>
+                
+                <!-- MAIN LI SIX -->
+                <li> 
+                    <div>Your Cause. 🤍</div>
+                    </br>
+                    <div>Key aspects:</div>
+                    <ul>
+                        <li>Not just to further our own causes, but everyone also believes in something and we aim to create a platform that empowers peoples causes in crypto. You can pitch your cause to our community to harness their skills in furthering it.</li>
+                    
+                        <li>Each cause has to be verified, and the creator KYCd, before its approved. Once approved the community can bring their skills and money to help further your goals.</li>
+                        <li>We will develop a rich resource library to make it easy for our community to start their own projects. Here you can find: reading material or templates as well as designers, marketers, developers from Dapps to Bots, financial analysts, etc.  </li>
+                        
+                    </ul>
+                </li>
+            </ol>
+            </div>
+        </div><!-- close holf_p3_cont--> 
+     </div><!-- close of holf_3_cont -->
+     <!-- Quantity should be the same in Sass-->
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+</section>
+
+
+<section id="holf_p4">
+	<div class="moneyflow"><h2>Money Flow</h2></div>
+    <div class="moneyflow_diag"><img width="100%" src="img/flowchart.png" /></div>
+    <span class="moneyflow_notes">
+    	<h1>Notes</h1>
+        <p>Illustration is for main contract not saloon contracts.</p>
+        <p>One third of Buy taxes go towards rewards. Rewards can also be donated by any well wisher.</p>
+        <p>Rebalancing wallet can also withdraw from Treasury wallet.</p>
+     </span>
+</section>
+
+
+<section id="holf_p5">
+	<div class="timeline"><h2>Timeline</h2></div>
+    <span class="moneyflow_notes">
+    	<h1>Where we are now and project scope. Phase 1.</h1>
+     </span>
+    <div class="timeline_diag"><img width="100%" src="img/timeline.png" /></div>
+</section>
+
+
+<section id="holf_p7">
+	<div class="faq"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq_cont">
+    	<main>
+        	<details open>
+                <summary>What is this?</summary>
+                <div class="faq__content">
+                    <p>This is a true decentralised autonomous ponzi, a community hedge concept, a zero loss ecosystem - piggy bank, meant to challenge existing limitations and evolve the space towards stability & sustainability. After all the defi drama this cycle, the only thing that can protect investors from dumps is ultimately tokenomics and carefully structured taxes.With our model, an attempt to dump the price benefits the holders directly, whilst holding also benefits the holders.</p>
+               </div>
+            </details>
+            <details open>
+                <summary>Inspiration?</summary>
+                <div class="faq__content">
+                    <p>"However, one thing to note nevertheless: everyone wanted high returns at a shorter time frame. So kind of treating the space like a golden goose that lays golden eggs. In case, the goose fails to lay the golden, let’s cut that goose and search for another one that lays golden eggs. Thus summing up the reason why terms like vampire attack, rug-pulls, and getting Rekt overnight floated thick and fast within the DeFi 1.0 ecosystem. As a result, the ecosystem wanted more control over the liquidity to make their protocols sustain for long. It was at that point in time when innovations like Olympus DAO swiftly made inroads seeing the success of MakerDAO protocols. However, the protocol did enter the DeFi space with an upside by working on all odds left by the erstwhile algorithmic stablecoin protocols." ~ cryptoticker.io Jan 2022</br></br>But rebase tokens recorded significant failures despite their novelty, maybe its time to go back to basics, and try find simple alternatives for stability. The taxing approach.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Why?</summary>
+                <div class="faq__content">
+                    <p>What if we try guarantee token value using just taxes? and throw away all the complexities, then structure a strong framework just centered around taxes. High taxes are deemed bad but they can actually be beneficial, nobody has just tried it. Whilst scammers used them as honeypots, Safemoon proved taxes can instead be useful to effect & guarantee a desired economic outcome than benefits investors not harm them. When this idea was concieved the struggle was to find a balance between making high taxes useful but whilst also abiding to Uniswap's tax constrictions, in order to remain functional bespite breaching tax limits. Rules are meant to be bent, especially if theres a common good coming out of it and possibly force a re-think of current industry limitations/standards. The end goal is the same; a safe, stable, sustainable ecosystem to invest in long term. No project has achieved that so far, so why not explore all avenues?</p>
+                </div>
+            </details>
+            <details open>
+                <summary>How?</summary>
+                <div class="faq__content">
+                    <p>90% sell tax which changes to 10% under strict conditions. 90% tax is obviously meant to discourage any selling, except if a sell is scheduled then its 10%. The scheduling is left to chance and in limited batches.</br>OHM forks were the closest thing to a tokenomics model that would let you sleep at night, your initial investment had a great degree of guarantee it wouldnt fall below the backed price. With Russian Roulette, inspired by Safemoon's 100% tax to force people to move to V3, we are using taxes to manipulate the token price.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Why risk being called a honeypot?</summary>
+                <div class="faq__content">
+                    <p>To be honest, why should we confine to the rules set by one Dex that transactions with taxes above 50% shouldnt go through? Shouldnt everything be possible in this space as long as there are benefits to it? We should break the stigma, keep evolving past these tax limitations set by other projects! To test our work around, see the next FAQ below.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Why does it sound like im locking my tokens away?</summary>
+                <div class="faq__content">
+                    <p>You can sell anytime you want, despite the 90% tax. Just not on Uniswaps front end, but using our contract as a proxy that points to Uniswap on your behalf. Heres how to test it, with even $1: buy tokens from Uniswap or our ProxyDex, delegate them for sell, and swap back eth, and see that is works. You sell into the same Uniswap liquidity pool as you would using uniswap's front end if it allowed taxes higher than 49%. Our contract as proxy accepts your tokens and perfoms the sell transaction on your behalf, sending eth direct to your wallet. You can cancel at any stage after delegating tokens to our contract and withdraw them back to your wallet. </p>
+                </div>
+            </details>
+            <details>
+                <summary>Why not staking?</summary>
+                <div class="faq__content">
+                    <p>Token locks only work when everyone commits. {3,3} Has been porpular for a reason, based on the faith that everyone will hold, but if anything the market never thinks in unison. Staking imposed 2 problems: <b>one</b>, the need to offer rewards in return, rewards which were unsustainable as a desperate appeal. <b>Two</b>, there is no way of accurately predicting the sell pressure when the tokens are unlocked, how many investors want to sell and how many want to rollover locks. Imposing sell taxes on the other hand allows us to predict and plan accordingly. We know how many people will sell on R.R Day with low taxes, we know the size of their wallets, and we have a month to prepare for the buy backs and burns. </p>
+                </div>
+            </details>
+            <details>
+                <summary>What's a Rebalancing wallet?</summary>
+                <div class="faq__content">
+                    <p>Its a community controlled wallet (smart contract), that acts as the intermediary to receive eth obtained from fees, then determine the beneficial way to allocate them based on sell and buy pressures. Other projects normally have a fixed amount that just goes to the treasury wallet, and to buy backs, with no actual justification for allocating the amounts. Based on trading volume it may be too little, it may be too much deployed to the treasury/buy backs. </p>
+                </div>
+            </details>
+            <details>
+                <summary>How does a Rebalancing wallet work?</summary>
+                <div class="faq__content">
+                    <p>Since there is a trade off between keeping a healthy token price and growing the treasury wallet, we measure buy pressure and sell pressure to determine what to prioritize between buybacks and growing our treasury. </br>If the buy pressure is high all excess after "sufficient buybacks" is send to the treasury wallet (contract). If the sell pressure is high, net eth lost is high and we step up allocations towards buybacks.</br>How is this done?</br>The Rebalancing wallet uses net eth outflows from the LP, versus the net buybacks in eth ever. NVL/buybacks = Rebalancing bias (RBB level). Ideally an RBB of 1 is perfect, but not realistic all the time. So the wallet is programmed to keep an eye on the minimum RBB 1, Median RBB 1.25, and max RBB 1.5 to determine how much to allocate towards buybacks and afterwards, how much to send to the treasury wallet. This is done automatically. This is a true self governance project, the community controls the RB wallet, the owner has no control over theses funds whatsoever, the automated checks in place are enough. So there is a polling range (between 1 & 1.5) and an auto-rebalancing range (below 1 or above 1.5). Whilst in the former, any community member can automatically trigger a rebalance. When in the latter range, any community member can trigger a poll for the community to vote on where to send funds. On poll conclusion it allocates funds automatically based on the poll results.</p>
+                </div>
+            </details>
+            <details>
+                <summary>How to reduce taxes to 10%?</summary>
+                <div class="faq__content">
+                    <p>2 ways: Play Russian Roulette with the tax man, or Stake for 6 months. To make scheduling fair we leave it to chance. Each wallet can only play once each month, if you win you can sell any Saturday. You pick a cylinder. The goal is to kill the tax man, if you spin and the taxman pulls the trigger from the same cylinder you loaded, he dies and you are automatically on the tax free list for the month. Each wallet has a 1 in 6 chance of success. This effectively leaves the scheduling of a sell to chance. The alternative approach is to buy and stake on the main contract for 6 months. Allocations for these slots is on a first come first serve basis, slots are limited based on excess collected by the RBW and send to Treasury, or what the team thinks we can afford to cover in future based on current income.</p>
+                </div>
+            </details>
+            <details>
+                <summary>Why arent 10% tax Sells based the RBW purse eth size?</summary>
+                <div class="faq__content">
+                    <p>Selling into the RBW eth balance would lead to scenarios where the reserved Eth on RBW can be depleted before all shceduled wallets sell. Which then defeats the point of scheduling.</p>
+                </div>
+            </details>
+            <details>
+                <summary>Contract ownership renounced?</summary>
+                <div class="faq__content">
+                    <p>We cant renounce. We need to have the ability to lower or increase taxes as the DAO deems fit. In addition to: setting discount on fee tokens bought via our proxy dex, setting limit on number of wallets who can stake for 6months this month (Sixers), registering third party contracts built on top of our main contract as fee collectors, Owner wallet does not control RBW or fees collected in any way, its merely a by stander. Owner cannot stop trading, RBW, or Treasury wallet in any way. Owner cannot withdraw any Eth funds from any of the contracts. Owner is tax excluded but cannot sell, can only send tokens tax free to other wallets meant for team members or incentive programs.</p>
+                </div>
+            </details>
+            <details>
+                <summary>How different is this DAO?</summary>
+                <div class="faq__content">
+                    <p>Here the community IS NOT JUST AN AUDIENCE but the owner is. The community has active duty to manage the health of the ecosystem directly, using polls and automated checks to make sure health levels are not breached.</p>
+                </div>
+            </details>
+            <details>
+                <summary>Zero Net loss System?</summary>
+                <div class="faq__content">
+                    <p>The goal is for the project to conatin value long enough to meet its growth goals. We are aiming to lose zero of the money that enters the project. If someone sells we buy back and burn those tokens. There will ofcourse be a difference between what we have in the coffers and the amount of money needed to give us a zero net loss after buy backs. Longterm all income streams we have should be able to cover that gap.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Can funds move from Treasury back to RBW?</summary>
+                <div class="faq__content">
+                    <p>Yes, funds can move across to help stabilise things where money is needed.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Kickass feature to look forward to?</summary>
+                <div class="faq__content">
+                    <p>Another experimental new feature we wish to inspire across the industry, Donating a stream of income to a charity wallet, that can accept unlimited number of donors and claim their rewards in one cheap transaction. In addition, we have Reward Aggregation/Dusting lined up. And lastly, a new.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>What's the point of using share bidding?</summary>
+                <div class="faq__content">
+                    <p>The primary purpose of Share bidding is to offer an alternative liquidity unlocking mechanism, where a holder can liquidate their tokens, by transfering directly to another investor who wants to take up the lot, instead of offloading into the LP. Share bidding will charge a 10% escrow fee.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Sources of income?</summary>
+                <div class="faq__content">
+                    <p>Transaction taxes.</br>Share bidding escrow fees.</br>Farming profits.</br>Saloon contracts.</br>Third party fee collectors.</br>Rewards/Charity facilitation fees.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>How to claim rewards?</summary>
+                <div class="faq__content">
+                    <p>Any transaction automatically claims reflections from contract to your wallet. It keeps a tally of the total ETH reflected ever and a mapping for the total alongside your address, this way you can't miss claims even when you are away and unable to claim right away. To claim, buy, sell or even just transfer tokens. Easiest, just head over to the Bank and click claim reflections.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Future plans?</summary>
+                <div class="faq__content">
+                    <p>This is all phase one of our plans. Phase 2 is hinged on Reward Aggregation and Charity and Crowdsourcing. We plan to develop a comic with a storyline, with NFTs. You should be able to live out the comic storylines in the Metaverse, and ultimately a real life Saloon in Blackrock City, offering crypto services for 1 week each year.</p>
+                </div>
+            </details>
+            <details open>
+                <summary>Final word</summary>
+                <div class="faq__content">
+                    <p>All the source code for this project is openly viewable on GitHub. Front end is pure/basic HTML, JS and CSS only. Anyone can review all the smart contracts or point it towards their preferred auditors. Let's test everything out and see where the tokenomics take us, using what we think we can afford to lose.</p>
+                    <p></br>"Sometimes the smallest step in the right direction, ends up being the biggest step of your life" ~ sTs.</p>
+                </div>
+            </details>
+        </main>
+    </div>
+</section>
+
+
+<section id="holf_p6">
+	<div class="contacts_cont">
+    	<span>email: info@russianroulette.io</span></br></br>
+        <a class="social_links" href="https://twitter.com/" target="_blank" alt="Twitter Page" title="Go to Twitter page"><img src="img/twitter.svg" width="32px"/></a>
+        <a class="social_links" href="https://telegram.com/" target="_blank" alt="Telegram Group" title="Go to Telegram group"><img src="img/telegram.svg" width="32px"/></a>
+        <a class="social_links" href="https://discord.com/" target="_blank" alt="Discord Server" title="Go to Discord server"><img src="img/discord.svg" width="32px"/></a>
+        
+	</div>
+    <div class="desert_big">
+      <div class="tumbleweed_big"></div>
+    </div>
+</section>
+<!-- LOADING OVERLAY-->
+<div id="loadOverlay" style="background: radial-gradient(#683c2c, #363636); position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
+    <div class="loading_badge_place">
+        <svg class="badge badgesvg" xmlns="http://www.w3.org/2000/svg" height="440" width="440" viewBox="-40 -40 440 440">
+          <circle class="outer" fill="#b87333" stroke="#fff" stroke-width="8" stroke-linecap="round" cx="180" cy="180" r="157"/><!-- cylinder out-->
+          <circle class="inner" fill="#963316cc" stroke="#fff" stroke-width="8" cx="180" cy="180" r="108.3"/>
+          <path class="inline" d="M89.4 276.7c-26-24.2-42.2-58.8-42.2-97.1 0-22.6 5.6-43.8 15.5-62.4m234.7.1c9.9 18.6 15.4 39.7 15.4 62.2 0 38.3-16.2 72.8-42.1 97" stroke="#963316cc" stroke-width="7" stroke-linecap="round" fill="none"/><!-- side marks -->
+              <g class="star">
+                  <path fill="#e89627" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M180 107.8l16.9 52.1h54.8l-44.3 32.2 16.9 52.1-44.3-32.2-44.3 32.2 16.9-52.1-44.3-32.2h54.8z"/><!-- center of star -->
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="180" cy="107.8" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="223.7" cy="244.2" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="135.5" cy="244.2" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="108.3" cy="160.4" r="4.4"/>
+                  <circle fill="#DFB828" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" cx="251.7" cy="160.4" r="4.4"/>
+              </g>	
+        </svg>
+    </div>
+</div>
+</body>
+</html>
