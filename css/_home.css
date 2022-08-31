@@ -371,6 +371,25 @@ span.issue_coverage{
 
 /* 
 ======================== who are we and what we do =====================*/
+.gallery{
+  position:relative;
+  width:100%;
+  padding:2%;
+  box-sizing: border-box;
+  text-align:center;
+  z-index:4;
+}
+.gallery img{
+  display:inline;
+  margin:0 2%;
+  width:100%;
+  max-width:250px;
+  height:150px;
+  border:2px solid #94563F;
+  border-radius:20px;
+  cursor:pointer;
+  text-decoration: none;
+}
 .carousel_h1{
   position: absolute;
   top:0;
@@ -384,7 +403,7 @@ span.issue_coverage{
   font-weight:400;
   color:#683c2c;
   color:#341e16;
-  color:#FFF;
+  color:#ddd;
   text-shadow: -0.5px 0.5px 0 #683c2c, 0.5px 0.5px 0 #683c2c, 0.5px -0.5px 0 #683c2c, -0.5px -0.5px 0 #713d2b !important;
 }
 .carousel_info{
@@ -397,7 +416,7 @@ span.issue_coverage{
   font-size: 1.1em;
   font-size: clamp(14px, 2vw, 17px) !important;
   line-height:1.5;
-  color:#FFF ; /* #b9b7b7 */
+  color:#ddd ; /* #b9b7b7 */
   /* text-shadow: -0.5px 0.5px 0 rgb(90, 87, 87), 0.5px 0.5px 0 rgb(90, 87, 87), 0.5px -0.5px 0 rgb(90, 87, 87), -0.5px -0.5px 0 rgb(90, 87, 87) !important; */
   letter-spacing: normal;
 }
@@ -405,7 +424,7 @@ span.issue_coverage{
 /*---- NUMBER OF SLIDE CONFIGURATION ----*/
 .wrapper {
   max-width: 60em;
-  margin: 5em auto 2em;
+  margin: 3em auto 2em;
   position: relative;
   z-index:4;
   /* background-color: #683c2c; */
@@ -517,6 +536,7 @@ article .carousel_info{
   display:block;
   width: 100%;
   overflow: hidden;
+  border:1px solid #94563F;
   border-radius: 5px;
   box-shadow: 1px 1px 4px #9d6b58;
   -webkit-transform: translateZ(0);
@@ -529,6 +549,7 @@ article .carousel_info{
   transition: all 500ms ease-out;
 
   /* background-color: #94563f; altRRDAO#1*/
+  background-color: #683c2c;
   background-position: center;
   background-size:contain;
   -webkit-mask-image:
@@ -761,7 +782,7 @@ div.feature_aside{
   font-family:monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
   font-size: clamp(14px, 2vw, 15px);
   color:#d9d9d9;
-  color:#FFF;
+  color:#ddd;
   background-color:#94563f;
   padding:5px 10px;
   box-sizing:border-box;
