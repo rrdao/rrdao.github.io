@@ -41,7 +41,7 @@ div.goalcont{
 div.goalcont ul{
   position:relative;
   margin:0px auto;
-  z-index:200;
+  z-index:5;
 }
 div.goalcont ul li{
   list-style: circle;
@@ -53,7 +53,7 @@ div.goalcont ul li{
   position: relative;
   margin: 0px auto;
   height:auto;
-  z-index: 200;
+  z-index: 5;
   padding:2%;
   box-sizing:border-box;
 
@@ -68,7 +68,7 @@ div.goalcont ul li{
 svg.placards{
   position: absolute;
   top: 0; left: 0;
-  z-index: 100;
+  z-index: 5;
   width: 100%; height: 100%;
 }
 [id=m1] + use {
@@ -164,7 +164,7 @@ svg.placards{
     height:7vw;
     width:7vw;
     text-align:center;
-    z-index:150;
+    z-index:6;
 }
 @media (max-width: 500px){
   .badge_place{
@@ -444,7 +444,7 @@ article {
   width: 20%;
   float: left;
   position: relative;
-  padding:5vw 2.5vw 2vw; /* 67.5px */
+  padding:6.5vw 2.5vw 2vw; /* 67.5px */
   box-sizing: border-box;
 }
 article .carousel_info{
@@ -676,7 +676,7 @@ width:120px;
 height:auto;
 max-height:120px;
 margin:10px auto;
-z-index:200;
+z-index:5;
 overflow:hidden;
 }
 .directionsplease img{
@@ -997,7 +997,7 @@ div.issuescont ol li ul li{
 div.issuescont ul{
 position:relative;
 margin:0px auto;
-z-index:200;
+z-index:5;
 }
 div.issuescont ul li{
 list-style: upper-greek inside;
