@@ -8,27 +8,37 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <title>Bank</title>
 <base href="{{site.baseurl}}" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_menu.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_bank_main.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_atm_actioncards.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_swapproxy.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_rbw.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_sharelease.css"><!-- share lease shares styles for hypecards -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/_atm_playRRcard.css"><!-- playing card was just too big -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/css/sweetalert/sweetalert.css">
+<link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
+<link rel="manifest" href="img/fav/site.webmanifest">
+<link rel="mask-icon" href="img/fav/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="img/fav/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="img/fav/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_menu.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_bank_main.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_atm_actioncards.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_swapproxy.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_rbw.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_sharelease.css"><!-- share lease shares styles for hypecards -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_atm_playRRcard.css"><!-- playing card was just too big -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/sweetalert/sweetalert.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_walletstatus.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_inclHTMLincluder.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_hypecards.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_rbw.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_swapproxy.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_inclHTMLincluder.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_walletstatus.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_inclHTMLincluder.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_hypecards.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_rbw.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_swapproxy.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_inclHTMLincluder.js"></script>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/_bank.js"></script>
-<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/js/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/_bank.js"></script>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/js/sweetalert/sweetalert.min.js"></script>
 
 <script>
 //Responsive Nav
@@ -139,7 +149,7 @@ document.addEventListener('DOMContentLoaded',function(event){
             <div class="myClaims">
                 <h4>Card Center</h4>
                 <!-- include hypecards module -->
-                <div hypecards-include-html="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/resources/_incl_hypecards.html"></div>
+                <div hypecards-include-html="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/resources/_incl_hypecards.html"></div>
             </div>
 
             
@@ -147,7 +157,7 @@ document.addEventListener('DOMContentLoaded',function(event){
         
          <section class="banksec">
             <!-- include rbw module -->
-			<div id="hypecard_poll" rbw-include-html="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/resources/_incl_rbw.html"></div>
+			<div id="hypecard_poll" rbw-include-html="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/resources/_incl_rbw.html"></div>
             <div id="hypecard_withdrawpoll">
                 <div class="inforview">
                     <div class="RBWlevels">
@@ -268,7 +278,7 @@ document.addEventListener('DOMContentLoaded',function(event){
          </section>
 
          <!-- include swap module -->
-		<div swaps-include-html="https://cdn.jsdelivr.net/gh/harvey7613/russianr@main/resources/_incl_swaps.html"></div>
+		<div swaps-include-html="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/resources/_incl_swaps.html"></div>
 
     </main>
 
@@ -280,7 +290,7 @@ document.addEventListener('DOMContentLoaded',function(event){
         <span class="popupText" id="popupAmounts"></span>
         <span class="popupText" id="popupTxhash"></span>
     </div>
-    <div id="pNt" class="popupNotify_timer"/></div>
+    <div id="pNt" class="popupNotify_timer"></div>
 </div>
 <!-- LOADING OVERLAY-->
 <div id="loadOverlay" style="background: radial-gradient(#683c2c, #363636); position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:2000;">
