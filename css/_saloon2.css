@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+@import "_sharelease.css";
+
+/* OUR CSS HERE */
+html{
+	margin: 0;
+	padding: 0;
+	overflow-x:hidden !important;
+}
+body {
+	position:relative;
+	width:100%;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	overflow-x:hidden !important;
+    background-color: #bbb;
+    background: url("../img/sketches/sketch_saloon_dark.png") no-repeat, #DDD !important;
+    background-size:cover !important;
+	background-attachment: fixed;
+}
+:root {
+  --aside-width: 20%;
+  --menu-height:52px;
+}
+#main{
+  
+}
+section{
+  position:fixed;
+  z-index: 1;
+  top: calc(var(--menu-height));
+  right:0;
+
+  height:calc(100% - 52px);
+  width: 80%;
+  overflow-y: scroll;
+  padding:0 4% calc(var(--menu-height));
+  box-sizing:border-box;
+  transition: 0.5s;
+}
+aside{
+  width: var(--aside-width);
+  min-width:165px;
+  max-width:200px;
+  height:calc(100% - 52px);
+
+  position: fixed;
+  z-index: 1;
+  top: calc(var(--menu-height));
+  left: 0;
+  overflow: hidden;
+  transition: 1s;
+  /* center child divs vertically and evenly spread */
+  display:grid;
+  align-items:center;
+}
+@media (max-width: 680px){
+  section {
+    position:relative;
+    top:0;
+    margin:20px auto 0;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    transition: 1s;
+  }
+  aside {
+    position:relative;
+    top:0;
+    margin:10px auto;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    transition: 1s;
+  }
+  #main{
+    overflow-y:hidden;
+  }
+  #mainwindow{
+    min-height:auto !important;
+  }
+}
+#header_cont, #mainwindow{
+  overflow:hidden;
+  min-height:150px; /* 200px */
+}
+/*INTRO*/
+section.introbanner{
+  position:relative;
+  top:0;
+  margin:10px auto;
+  width:100%;
+  height:100%;
+  padding:0px 40px;
+  box-sizing:border-box;
+  z-index:2;
+  overflow:hidden;
+}
+svg {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 100;
+	width: 100%; height: 100%;
+}
+[id=m] + use {
+  fill: rgb(54, 54, 54);
+  stroke:#683c2c;
+  stroke-width:5;
+}
+.windows_shift{
+  position:relative;
+  margin:0px auto;
+  z-index:200;
+  box-sizing:border-box;
+  background-color:#363636;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5));
+  background: radial-gradient(#683c2c, #363636);
+  font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(10px, 1vw, 14px) !important;
+  line-height:1.5;
+}
+.intro_cont{
+	position:relative;
+	display:block;
+	width:100%;
+}
+.intro_ {
+	display:block;
+	width:auto;
+	height:auto;
+	padding:10px;
+	color: #FFF;
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(13px, 1vw, 15px) !important;
+  line-height:1.5;
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	white-space:normal; /* nowrap Keeps the content on a single line */
+	/* Gives that scrolling effect as the typing happens */
+	letter-spacing: .15em; /* Adjust as needed */
+	text-align:left;
+	/* effect on border */
+	
+}
+span#typewrite {/* effect on span */
+  animation: caret 0.7s steps(10) infinite;
+  border-right: .20em solid; /* The typwriter cursor */
+}
+@keyframes caret {
+  from, to { border-color: orange }/* change from black to orange blinking */
+  100% { border-color: #000 }
+}
+/* ONE LIL HACK */
+.sweet-alert.show-input input{
+	display:none !important;
+}
+.balancesTable{
+	margin:0px auto;
+}
+.separator_{
+	margin:10px 0 10px;
+	padding:2px;
+	box-sizing:border-box;
+	border-top:10px solid #444;
+	border-bottom:10px solid #444;
+}
+.sal_navs_hold{
+  position:relative;
+  margin:0px auto;
+  margin-bottom:10px;
+  border-bottom:0.5px solid #444;
+  width: 100%; /* complements the parent containter: display:grid; align-items:center; */
+}
+.saloonnavs, .sn_contracts{
+  position:relative;
+  margin:0px auto;
+  width:100%;
+  line-height:48px !important;
+  border:0.5px solid #222222;
+  box-sizing:border-box;
+  padding:2px 1%;
+  cursor:pointer;
+  font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(13px, 1vw, 15px) !important;
+  
+  letter-spacing:0;
+  font-weight:400 !important;
+  text-align:center;
+  color:#F4F4F4;
+  background-color:#303030;
+}
+.sn_contracts{
+  padding:2px 1%;
+  padding-right: 25px;
+  text-align:right;
+  color:#FFF;
+  background: url("../img/dnext-arrow.png") no-repeat right center, linear-gradient(to right top, #383636, #3a3636, #3b3635, #3d3635, #3e3634, #3f3634, #3f3633, #403633, #403633, #3f3733, #3f3734, #3f3734);
+  background-position: 99%, 0 0;
+  background-size: 18px, cover;
+}
+.comingsoon{
+  text-transform:capitalize;
+}
+.comingsoon:hover span {display:none}
+.comingsoon:hover:before {content:"Hold your horses.."; color:#F3F3F3; font-size: clamp(13px, 1vw, 15px) !important;}
+#leftpaner ul{
+  display:none;
+  margin: 0px auto;
+  min-width:100px;
+  border-bottom:0.5px solid #363636;
+  padding:10px;
+}
+#leftpaner{
+  background-color: #363636;
+  border-collapse: separate !important;
+  border-right: 3px solid #6d3c2b !important;
+  box-sizing:border-box;
+}
+#leftpaner ul li{
+  position: relative;
+  width:100%;
+  border-radius:0px;
+  margin:0px auto;
+  margin-bottom:2%;
+  box-sizing:border-box;
+  list-style: none;
+  text-align:left;
+  font-family: 'Open Sans', Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: clamp(13px, 1vw, 15px) !important;
+  line-height:1.5;
+  cursor:pointer;
+  border: 2px solid #363636;
+  border-left: 5px solid #363636;
+  background-color: #EAEAEA;
+}
+#leftpaner ul li:hover {
+  background-color: #EAEAEA;
+  border-color: #ebf4fa;
+  /*water color*/
+}
+#leftpaner ul li span{
+  display:inline-block;
+  padding: 5px 10px;
+}
+#leftpaner ul li span.due{
+  width:100%;
+  border-top:0.5px solid #630;
+  padding:2px 10px;
+  box-sizing:border-box;
+  background-color: rgba(45, 19, 6, .05);/* last digit opacity */
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+/* Feature Windows */
+#maincontract_win{
+	padding:0 !important;/* show borders on our polished wood effect*/
+	border:none !important;
+}
+#saloon_win,#ruro_win,#sharelease_win,#sharebid_win,#charity_win{
+  display:none;
+  background: radial-gradient(#683c2c, #363636);
+}
+#win_sharelease .contractpurpose_head, #maincontract_win .contractpurpose_head, #win_sharebidding .contractpurpose_head, #win_charity .contractpurpose_head{
+  padding:0.3vw 0;
+}
+#win_sharelease{
+  overflow:hidden; /* slide effect */
+	height:100%;
+	min-height:621px;
+	box-sizing: border-box;
+	/* golden darkie effect diabled, looks neater like this
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5), rgba(255,0,0,0));*/
+  background: radial-gradient(#683c2c, #363636);
+}
+.introbanner_insider{
+  position: relative;
+  margin: 0px auto;
+  z-index: 200;
+  padding-top: 35px;
+  box-sizing: border-box;
+
+  border-top: #e5e5e5 0.5px solid;
+  border:0.5px solid #363636;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5), rgba(255,0,0,0));
+  font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(13px, 1vw, 15px) !important;
+  line-height:1.5;
+}
+@media (max-width: 680px){
+    .introbanner_insider {
+      min-height:155px;
+    }
+}
+.bannerspan{
+  display:block;
+  margin:0px auto;
+  width:100%;
+  min-width:auto;
+  text-align:left;
+  color:#EAEAEA;
+  background-color:#363636;
+  box-sizing:border-box;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5), rgba(255,0,0,0));
+
+  font-family: 'Rye', 'cursive', "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(14px, 5vw, 27px) !important;
+  line-height:1.5;
+  text-transform:uppercase;
+}
+.screvealer{
+  color:#FFF;
+  text-align:left;
+}
+.loadstat{
+  margin:0px auto;vertical-align:text-bottom;
+}
+.loadstat img{
+  width:24px;
+}
+.contractpurpose{
+  display:block;
+  padding:2%;
+  margin:0px auto;
+  width:100%;
+  min-width:auto;
+  text-align:left;
+  color:#EAEAEA;
+  padding-bottom:1%;
+  box-sizing:border-box;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(172, 68, 31, 0.5), rgba(255,0,0,0));
+  background: radial-gradient(#683c2c, #363636) !important;
+  font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial;
+  font-size: clamp(11px, 1vw, 14px) !important;
+  text-transform:uppercase;
+}
+#sharelease_win, #win_sharelease .contractpurpose{
+    background: none !important;
+    background-image: none !important;
+}
+.contractpurpose img{
+  width:11.5px;
+  padding-right:4px;
+}
+.contractpurpose_head{
+  display:block;
+  padding: 0 2%;
+  box-sizing:border-box;
+  font-family: 'Rye', 'cursive' !important;
+  font-size: clamp(14px, 2vw, 20px) !important;
+  line-height:1.5;
+  
+  text-align: left;
+  color: #EAEAEA;
+  text-transform: uppercase;
+}
+.contractpurpose_details{
+  border-top:0.5px solid #DDD;
+  margin-top:2%;
+  display:block;
+  font-family: monospace, sans-serif !important;
+  font-size: clamp(11px, 1vw, 14px) !important;
+}
+.contractpurpose_details p{
+  margin-bottom:0.7%;
+}
+.contractpurpose img{
+  width:11.5px;
+  padding-right:4px;
+}
+.tab{
+	tab-size:2;
+}
+.saloonLists{
+  list-style-position: inside;
+}
+.saloonLists li{
+  
+}
+.saloonLists ul{
+  padding:1% 0;
+  box-sizing:border-box;
+}
+.tab{
+	tab-size:2;
+}
+.contractbtns_hold{
+	position:relative;
+	text-align:left;
+	padding:5px;
+	box-sizing:border-box;
+	margin:6px auto;
+}
+.contractbtns{
+	display:inline-block;
+	height:30px;
+	width:30%;
+	min-width:300px;
+	padding:5px;
+	box-sizing:border-box;
+	background-color:#363636;
+	color:#FFF;
+	text-align:left;
+	vertical-align:middle;
+	margin:2px 1.5em;
+	cursor:pointer;
+}
+.cb_contract{
+	overflow:hidden;
+	white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+.cb_dextools, .cb_uniswap{
+	width:120px;
+	min-width:120px;
+	height:auto;
+	padding:10px 5px;
+	border-radius:8px;
+	text-align:center;
+	border:0.5px solid #ac441f;
+	line-height:normal;
+}
+.cb_contract::before {
+  content: " ";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  margin-top: 0px;
+  margin-left: -30px;
+  background-image: url("https://media.inkscape.org/media/resources/file/copy.png");
+  background-size: 100% 100%;
+}
+.tablecont{
+	margin:0px auto;
+	width:100%;
+	min-height:648px;
+	background-color:#363636;
+	padding:0 2% 2% 2%;
+	box-sizing:border-box;
+}
+table.contractsummarytable{
+    width:100%;
+    max-width:700px;
+    padding:2%;
+    font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+    font-size: clamp(13px, 1vw, 15px) !important;
+    line-height:1.5;
+    font-weight:400 !important;
+    color:#EAEAEA;
+    border: #363636 0.5px solid; 
+    border-spacing: initial;
+    word-break: break-word;
+    table-layout: fixed;
+    text-align: left;
+    border-collapse: collapse;
+    background-color:#363636;
+    border:0.5px solid #363636;
+    border-radius:7px;
+}
+table th{
+	color:#FFF;
+}
+table tr td{
+	border-bottom:0.5px solid #e4e4e74d;
+	font-family: monospace, sans-serif, "Helvetica Neue", Helvetica, Arial !important;
+  font-size: clamp(11px, 1vw, 14px) !important;
+  line-height:1;
+	text-align:left;
+	padding:2%;
+	box-sizing:border-box;
+}
+table tr td.mapvalue{
+	border-left:0.5px solid #4F4F4F;
+  white-space: nowrap;/* no breaks */
+}
+table tr td.mapspec{
+	font-weight:600;
+}
+table.stakesummaryrow{
+	
+}
+.my_box{
+	font-size:17px;
+  color:#94563f;
+}
+
+/*===============================
+      BOTTOM OF EVERY CSS FILE
+=================================
+*/
+#loadOverlay{display: none;}
+.loading_badge_place {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height:15vw;
+  width:15vw;
+  text-align:center;
+  z-index:150;
+}
