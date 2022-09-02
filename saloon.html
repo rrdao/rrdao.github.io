@@ -28,7 +28,7 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_menu.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_saloon2.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/_saloon3.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/rrdaoproxy/russianr@main/css/sweetalert/sweetalert.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded',function(event){
               <svg>
                   <mask id='m' fill='#fff'>
                   <rect id='r' width='100%' height='100%'/>
-                  <circle id='c' r='40' fill='#000'/>
+                  <circle id='c' r='3.5vw' fill='#000'/>
                   <use xlink:href='#c' x='100%'/>
                   <use xlink:href='#c' y='100%'/>
                   <use xlink:href='#c' x='100%' y='100%'/>
@@ -185,30 +185,38 @@ document.addEventListener('DOMContentLoaded',function(event){
         <div class="contractpurpose">
               <span class="contractpurpose_head"><h1>Main Contract R.R.Dao </h1></span>
               <span class="contractpurpose_details">
-              <p>> Pioneering inbuilt anti-dump mechanisms & sell pressure bottlenecks: </br>90% sell tax on ordinary days, 1/6 odds to whitelist for 10% sell tax, share bidding as parallel liquidity unlocking platform.</p>
-              <p>> Sell through our contract's Proxy Dex to bypass Uniswap's 50% slippage limitation. Those whitelisted for 10% sell tax can sell both through Uniswap and our Proxy Dex.</p>
-              <p>> LP value lost is replaced through buy backs. Since Tax is 90% the goal is to buyback all eth lost from the LP per sell. 90% lost on RR day for scheduled wallets. 10% lost outside of RR day for unscheduled wallets.</p>
-              <p>> The High Sell Tax means value gets left behind when an unscheduled sell happens, last man standing wins.</br>
-              - Buying frenzy - holders win</br>
-              - Price hovers - holders win</br>
-              - Sell frenzy - holders win</p></br>
-              <p>> 5% reflections, from buy transactions. All other rewards come from Treasury profits or donations directly to the community. Rewards can stay unclaimed and not be lost.</p></br>
-              <p>> Rewards can be claimed from: wallet tokens, staked tokens, share lease occupied. Rewards are calculated on circulating supply not total like other projects, hence each burn or unscheduled sell (90%) results in larger rewards for holders.</p></br>
-              <p>> Buy and stake automatically through our proxy dex to earn special privileges like: automatic whitelisting for 10% sell tax if you stake 180 days, buy at a 5% discount compared to Uniswap prices.</p></br>
-              <p>> Supply is fixed, all tokens sold are burnt. For an unscheduled sell (90%) only 10% end up in the LP, but is bought back by the Community RBW and value lost (NVL) replaced. Leaving the next batch of sellers unaffected.</p></br>
-              <p>> Taxes are collected in tokens, <b><u>BUT</u></b> unlike others are <b><u>NOT</u></b> stealthily liquidated into the LP for eth with every sell transaction. They are instead liquidated through buys on our Proxy Dex and send to the Rebalancing Wallet (RBW).</p></br>
-              <p>> RBW funds are deployed automatically or through polls by the community, with amounts responsive to Buy or Sell pressures in the LP:</p>
-              <p>&emsp;<img title="High Sell Pressure Days" src="img/info.png" />HSP period - RBW funnels funds to buy backs until rebalance bias falls between 1.5 and 1.</p>
-              <p>&emsp;<img title="Low Sell Pressure Days" src="img/info.png" />LSP period - RBW funnels funds to the farming treasury.</p>
-              <p>&emsp;<img title="Russian Roulette Day" src="img/info.png" />On RR day - 10/10% to buy backs on HSP days, or to treasury on LSP days.</p>
+              <p>> Pioneering inbuilt anti-dump mechanisms to create sell pressure bottlenecks: </br> - Flactuating Sell Tax ~ 90% for unscheduled sells, </br> - 10% for scheduled sells every Saturday. </br> - A 1/6 odds to whitelist for 10% sell tax, odds adjustable at community consultation.</p>
+              <p>> To overcome the Uniswap limit of 49% max slippage, our contract acts as Proxy Dex. It sells into the same Uniswap Liquidity Pool on your behalf, with your wallet as recipient from Uniswap. Test it with even a few cents, buy tokens via the proxy dex (under the atm page), and sell them at 90%. Then go check the Tx on Etherscan. Post proof that the concept works to community trading group.</p>
+              <p>> Wallets scheduled for a 10% sell tax can sell both through Uniswap and our Proxy Dex. Only those who are at a 90% tax cant sell on Uniswap.</p>
+              <p>> During the week, all sells are bought back up by the RBW (See contract). Scheduled or unscheduled, all sells will be bought back up automatically through polls or level triggers. These are reactions to the projects health by the community.</p>
+              
+              <p>> For all unscheduled sells, which will be the majority of the population, a sell would mean taking only 10% of your value from the LP. Holders or those scheduled but waiting to sell, are not exit liquidity.</br>
+              - Buying frenzy occurs - holders gain</br>
+              - Price hovers - holders unscathed</br>
+              - Selling frenzy occurs - holders unscathed</p></br>
+              <p><b>* dont trust me only, validate, check the code and the auditors report of the functionality. Automated honeypot sniffers will falsely red flag this contract. This is because they only attempt normal sells that use the normal Transfer function to effect a tax on a sell attempt. They will fail here. Instead our selling is done using the _sell() function, pointing to Uniswap, with your wallet as receiving address.</b></br></p>
               </br>
-              <p>> Do more with your tokens under share bidding: sell, rent out, trade future cashflows, etc</p></br>
-              <p>> You can assign beneficiaries to your rewards, and the beneficiary can claim your rewards.</p></br>
-              <p>> Rent out your tokens, normally you own to earn, here we introduce rent-out to earn, in order to give holders more liquidity options.</br>
-              <p>> Boost your  holdings by gun slinging or gambling against other investors.</p></br>
-              <p>> Vote on causes and DAO decisions or elections using your shares to control your own fate.</p></br>
+              <p>> Buy Tax - 15% constant.</p>
+              <p>> 5% goes towards reflections, from buy transactions only. All other rewards come from Treasury profits or donations directly to the community. Rewards can stay unclaimed and not be lost even when you stake or unstake, you can continue claiming rewards from them no matter where they are.</p></br>
+              <p>> Rewards can be claimed from: wallet tokens, staked tokens, share lease occupied. Rewards are calculated on circulating supply not total supply, hence each burn or unscheduled sell (90%) results in larger rewards for holders.</p></br>
+              <p>> Buy and stake automatically through our proxy dex: if you stake 180 days you automatically get scheduled for a sell upon unstaking. Buy from our Proxy Dex earns you a 5% discount compared to Uniswap prices.</p></br>
+              <p>> Supply is fixed, all tokens sold are burnt. For an unscheduled sell (90%) only 10% end up in the LP, but is bought back by the Community RBW and value lost (NVL) replaced. Leaving the next batch of sellers unaffected.</p></br>
+              <p>> Taxes are collected in tokens, <b><u>BUT</u></b> unlike other projects that stealthily liquidate them into the LP, on every sell transaction. We instead liquidate through buys on our Proxy Dex only, and automatically send the Eth to the Rebalancing Wallet (RBW) for the community to manage the project's health with reactionary rebalancing polls.</p></br>
+              <p>> In the RBW, funds are deployed automatically or through polls by the community, with amounts responsive to Buy or Sell pressures in the LP:</p>
+              <p>&emsp;<img title="High Sell Pressure Days" src="img/info.png" />RBB above 1.5 - RBW funnels funds to buy backs until rebalance bias falls between 1.5 and 1.</p>
+              <p>&emsp;<img title="Low Sell Pressure Days" src="img/info.png" />RBB below 1 - RBW funnels funds to the farming treasury.</p>
+              <p>&emsp;<img title="Russian Roulette Day" src="img/info.png" />RBB 1 to 1.5 - Any community member can trigger a poll on where to allocate funds based on the health level or sell pressure. During the polling period, the contract will refuse to allocate funds to Treasury or buybacks, until theres a verdict.</p>
+              </br>
+              <p>* <b>Other key functions:</b></p>
+              </br>
+              <p>> You can assign beneficiaries to your rewards, and the beneficiary can claim your rewards. A beneficiary can have multiple donors, and can claim from them all in one cheap transaction.</p></br>
+              <p>> You can rent out your tokens, using the Share Lease functionality. You ask for all future rewards from the lessee outright, at a discount. Rent-out to earn. in order to give holders more liquidity options.</br>
+              </br>
+              <p>* <b>In the near future new features will be added/enabled: </b></p>
+              <p>> Gun Slinging contract to compete against other degen investors who like to gamble.</p></br>
+              <p>> Voting on saloon contracts to list, charities to add, scheduling odds to use, etc. Using your shares to control your own fate.</p></br>
               <p>> New arbitrage contracts, or rewards from future ventures will be exclusive to main token holders only.</p></br>
-              <p>> **THIS IS PHASE 1. See timeline for phase 2.</p></br>
+              <p>> **THIS IS PHASE 1 of our Development. See timeline for insights into phase 2.</p></br>
               </span>
           </div>
           <div class="contractbtns_hold">
