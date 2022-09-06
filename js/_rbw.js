@@ -253,7 +253,7 @@ rbw_tokenInst.events.rbCHECK()
 			var expiryRaw = parseFloat(gotPoll[5]);//float to enable math
 			var expiry = new Date(expiryRaw * 1000).toLocaleString([],{month: 'short', day: '2-digit', hour: '2-digit', minute:'2-digit', hour12: false});
 			var message = 'Rebalancing Poll#'+currentPoll+' Created';
-			var nonTxAction = 'Expires: '+expiry+' (poll-frequency: '+MyLibrary.rbFrequency+' /hr)';
+			var nonTxAction = 'Expiry: '+expiry+' (poll-frequency: '+MyLibrary.rbFrequency+' /hr)';
 		}
 
 		var outputCurrency = '';//or GUN - currency focus is outcome of Tx
@@ -678,9 +678,9 @@ async function withdrawalRequestPoll(){
 		//last request time
 		var lastRequestTime = new Date(lastRequestTime * 1000).toLocaleString([],{month: 'short', day: '2-digit', hour: '2-digit', minute:'2-digit', hour12: false});
 		if(requestIDfloat < 1){
-			$('#requestTimes').empty().append('{last: 0/0/0000} started: '+requestStart+', expires: '+requestExpires+'');
+			$('#requestTimes').empty().append('{last: 0/0/0000} started: '+requestStart+', expiry: '+requestExpires+'');
 		}else{
-			$('#requestTimes').empty().append('{last: '+lastRequestTime+'} started: '+requestStart+', expires: '+requestExpires+'');
+			$('#requestTimes').empty().append('{last: '+lastRequestTime+'} started: '+requestStart+', expiry: '+requestExpires+'');
 		}
 		//set marker for continued 
 		MyLibrary.notFirst = true;
